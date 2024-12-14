@@ -1,0 +1,160 @@
+/* Reseteo básico de márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo animado para la página */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #74b9ff, #81ecec, #a29bfe);
+    background-size: 300% 300%;
+    animation: backgroundAnimation 12s ease infinite;
+    color: #2d3436;
+}
+
+/* Animación del fondo */
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Contenido principal */
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+p {
+    text-align: center;
+    font-size: 18px;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+
+/* Estilo para el encabezado principal */
+h1 {
+    font-size: 36px;
+    color: #1c2732;
+    margin-bottom: 10px;
+}
+
+/* Estilo para el subtítulo */
+h2 {
+    font-size: 24px;
+    color: #191e1e;
+    margin-bottom: 20px;
+}
+
+/* Estilo de la imagen del código QR */
+img {
+    width: 300px;
+    height: 300px;
+    border: 5px solid #2c3e50;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sombra y bordes para el contenedor */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón grande y estilizado */
+.button-home {
+    display: inline-block;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.4s ease-in-out; /* Transición suave */
+    background-size: 200%; /* Para permitir el desplazamiento del gradiente */
+}
+
+/* Efecto hover */
+.button-home:hover {
+    background-position: right center; /* Mueve el gradiente */
+    transform: translateY(-5px) scale(1.05); /* Eleva y amplía ligeramente el botón */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+}
+
+/* Efecto de clic */
+.button-home:active {
+    transform: translateY(2px) scale(0.98); /* Simula el clic al presionar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Adaptabilidad para pantallas pequeñas */
+@media (max-width: 768px) {
+    .button-home {
+        font-size: 20px;
+        padding: 12px 30px;
+    }
+
+
+}/* Botón descargas */
+.button-download {
+    display: inline-block;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.4s ease-in-out; /* Transición suave */
+    background-size: 200%; /* Para permitir el desplazamiento del gradiente */
+}
+
+/* Efecto hover */
+.button-download:hover {
+    background-position: right center; /* Mueve el gradiente */
+    transform: translateY(-5px) scale(1.05); /* Eleva y amplía ligeramente el botón */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+}
+
+/* Efecto de clic */
+.button-download:active {
+    transform: translateY(2px) scale(0.98); /* Simula el clic al presionar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Adaptabilidad para pantallas pequeñas */
+@media (max-width: 768px) {
+    .button-download {
+        font-size: 20px;
+        padding: 12px 30px;
+    }
+}

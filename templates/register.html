@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="cat">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionari</title>
+    <link rel="stylesheet" href="/static/css/style_cuestionario.css">
+</head>
+<body>
+    <h1><br>Dades per crear el teu perfil (POWERED BY MONDONGO TV)</h1>
+    <form method="POST">
+        <h2>Dades personals</h2>
+        <label for="health_card_number">Número de tarjeta sanitària:</label><br>
+        <input type="text" id="health_card_number" name="health_card_number" required><br><br>
+
+        <label for="password">Contraseña:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="full_name">Nom complet</label><br>
+        <input type="text" id="full_name" name="full_name" required><br><br>
+
+        <label for="age">Edat:</label><br>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="sex">Sexe biològic</label><br>
+        <select id="sex" name="sex" required>
+            <option value="Male">Home</option>
+            <option value="Female">Dona</option>
+        </select><br><br>
+
+        <label for="blood_type">Grup sanguini:</label><br>
+        <select id="blood_type" name="blood_type" required>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+        </select><br><br>
+
+        <h2>Historial Mèdic</h2>
+        <label for="diseases">Antecedents de malalties rellevants</label><br>
+        <textarea id="diseases" name="diseases"></textarea><br><br>
+
+        <label for="medications">Prens medicació? En cas afirmatiu, quina/es?</label><br>
+        <textarea id="medications" name="medications"></textarea><br><br>
+
+        <label for ="MPID">Pateixes alguna de les malalties pulmonars intersticials difuses (MPID)?</label><br>
+        <textarea id="MPID" name = "MPID"></textarea><br><br>
+
+        <div class="mpid-section">
+            <h3>Preguntes específiques per a pacients amb MPID</h3>
+            <label for="base_treatment">Ttm de base:</label><br>
+            <textarea id="base_treatment" name="base_treatment" rows="3" placeholder="Indiqui el tractament..."></textarea><br><br>
+
+            <label for="immunosuppression">Immunosupressió:</label><br>
+            <select id="immunosuppression" name="immunosuppression">
+                <option value="yes">Sí</option>
+                <option value="no">No</option>
+            </select><br><br>
+
+            <label for="comorbidities">Comorbiditats:</label><br>
+            <textarea id="comorbidities" name="comorbidities" rows="3" placeholder="Especifiqui altres cormobilitats ..."></textarea><br><br>
+        </div>
+        
+        <br><br><br>
+        <h2>Hàbits o factors de risc</h2>
+        <label for="smoker">Fumes?</label><br>
+        <select id="smoker" name="smoker" required>
+            <option value="Yes">Sí</option>
+            <option value="No">No</option>
+            <option value ="Ex-fumador">Ex-fumador</option>
+        </select><br><br>
+
+        <label for="physical_activity">Practiques esports regularment?</label><br>
+        <select id="physical_activity" name="physical_activity" required>
+            <option value="Yes">Sí</option>
+            <option value="No">No</option>
+        </select><br><br>
+
+        <label for="alcohol_consumption">Consumeixes alcohol?</label><br>
+        <select id="alcohol_consumption" name="alcohol_consumption" required>
+            <option value="Yes">Sí</option>
+            <option value="No">No</option>
+        </select><br><br>
+
+        <label for="asma">Pateixes d'asma?</label><br>
+        <select id="asma" name="asma" required>
+            <option value="Yes">Sí</option>
+            <option value="No">No</option>
+        </select><br><br>
+
+        <button type="submit">Següent</button>
+    </form>
+
+    <br><br>
+
+    <p>Ja tens compte?<a href="/"><button>Inicia sessió aquí</button></a></p>
+
+    <br><br><br><br>
+
+
+</body>
+</html>

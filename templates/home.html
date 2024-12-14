@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+</head>
+<body>
+    <!-- Menú lateral -->
+    <nav>
+        <ul>
+            <li onclick="toggleMenu('submenu1')">Perfil</li>
+            <li onclick="toggleMenu('submenu2')">Com em trobo</li>
+            <li onclick="toggleMenu('submenu3')">Guia urgències</li>
+            <li onclick="toggleMenu('submenu4')">Historial de proves</li>
+            <li onclick="toggleMenu('submenu5')">Centres mèdics propers</li>
+        </ul>
+    </nav>
+
+    <!-- Barra superior de navegación -->
+    <div class="top-nav">
+        <a href="/register">Registrarse</a>
+        <a href="/login">Iniciar Sesión</a>
+        <a href="/user_info">Info</a>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="content">
+        <h1>Bienvenido</h1>
+        <p>Selecciona una opción del menú lateral o la barra superior para comenzar.</p>
+    </div>
+
+    <script>
+        function toggleMenu(submenuId) {
+            const submenu = document.getElementById(submenuId);
+            if (submenu) {
+                submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+            }
+        }
+    </script>
+</body>
+</html>

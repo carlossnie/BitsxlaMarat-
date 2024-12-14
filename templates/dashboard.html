@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="cat">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DADES</title>
+    <link rel="stylesheet" href="/static/css/style_qr.css">
+    <style>
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .button-download {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <h1>S'ha creat exitosament el teu perfil associat a aquest codi QR</h1><br>
+    <h2>Escaneja el codi QR per veure el teu perfil.</h2>
+    <img src="{{ url_for('static', filename=qr_code_path) }}" alt="QR Code">
+    <div class="button-container">
+        <a href="home" class="button-home">Pàgina principal</a>
+        <a href="{{ url_for('static', filename=codi_qr) }}" download="codi_qr.png" class="button-download">Descarrega el codi</a>
+    </div>
+
+    <script>
+        document.getElementById('download-qr').addEventListener('click', function() {
+            const qrImage = document.getElementById('qr-image');
+            const link = document.createElement('a');
+            link.href = qrImage.src;
+            link.download = 'codi_qr.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
+</body>
+</html>

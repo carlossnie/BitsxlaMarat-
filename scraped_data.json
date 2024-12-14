@@ -1,0 +1,548 @@
+[
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "Skip to main content",
+        "link": "#main-content",
+        "scraped_at": "2024-12-14T18:47:49.970776"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "An official website of the United States government",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970795"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "Official websites use .gov\n\n                            A\n                            .gov website belongs to an official\n                            government organization in the United States.",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970807"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "Secure .gov websites use HTTPS\n\n                            A lock (\n                            \n\nLock\n\n                                    Locked padlock icon\n                                    \n\n\n) or https:// means you've safely\n                                connected to the .gov website. Share sensitive\n                                information only on official, secure websites.",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970824"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "",
+        "link": "/",
+        "scraped_at": "2024-12-14T18:47:49.970831"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "Dashboard",
+        "link": "https://www.ncbi.nlm.nih.gov/myncbi/",
+        "scraped_at": "2024-12-14T18:47:49.970837"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "Publications",
+        "link": "https://www.ncbi.nlm.nih.gov/myncbi/collections/bibliography/",
+        "scraped_at": "2024-12-14T18:47:49.970846"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "Account settings",
+        "link": "https://www.ncbi.nlm.nih.gov/account/settings/",
+        "scraped_at": "2024-12-14T18:47:49.970850"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "Primary site navigation",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970859"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "Logged in as:",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970865"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "Dashboard",
+        "link": "https://www.ncbi.nlm.nih.gov/myncbi/",
+        "scraped_at": "2024-12-14T18:47:49.970870"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "Publications",
+        "link": "https://www.ncbi.nlm.nih.gov/myncbi/collections/bibliography/",
+        "scraped_at": "2024-12-14T18:47:49.970880"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "Account settings",
+        "link": "https://www.ncbi.nlm.nih.gov/account/settings/",
+        "scraped_at": "2024-12-14T18:47:49.970885"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h1",
+        "content": "PubMed Central (PMC) Home Page",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970889"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "No content",
+        "link": "/",
+        "scraped_at": "2024-12-14T18:47:49.970893"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "Advanced",
+        "link": "https://www.ncbi.nlm.nih.gov/pmc/advanced/",
+        "scraped_at": "2024-12-14T18:47:49.970898"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "Journal List",
+        "link": "/journals/",
+        "scraped_at": "2024-12-14T18:47:49.970903"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "PubMed Central® (PMC) is a free full-text archive of biomedical and life sciences journal literature at the U.S. National Institutes of Health's National Library of Medicine (NIH/NLM)",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970909"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h2",
+        "content": "About PMC",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970915"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "About PMC",
+        "link": "/about/intro/",
+        "scraped_at": "2024-12-14T18:47:49.970919"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "Discover a digital archive of scholarly articles, spanning centuries of scientific research.",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970923"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h2",
+        "content": "User Guide",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970929"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "User Guide",
+        "link": "/about/userguide/",
+        "scraped_at": "2024-12-14T18:47:49.970934"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "Learn how to find and read articles of interest to you.",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970938"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h2",
+        "content": "Collections",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970944"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "Collections",
+        "link": "/about/collections/",
+        "scraped_at": "2024-12-14T18:47:49.970949"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "Browse the PMC Journal List or learn about some of PMC's unique collections.",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970954"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h2",
+        "content": "For Authors",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970959"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "For Authors",
+        "link": "/about/submission-methods/",
+        "scraped_at": "2024-12-14T18:47:49.970964"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "Navigate the PMC submission methods to comply with a funder mandate, expand access, and ensure preservation.",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970968"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h2",
+        "content": "For Publishers",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970974"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "For Publishers",
+        "link": "/pub/pubinfo/",
+        "scraped_at": "2024-12-14T18:47:49.970978"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "Learn about deposit options for journals and publishers and the PMC selection process.",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970982"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h2",
+        "content": "For Developers",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.970988"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "For Developers",
+        "link": "/tools/developers/",
+        "scraped_at": "2024-12-14T18:47:49.970995"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "Find tools for bulk download, text mining, and other machine analysis.",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971000"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h2",
+        "content": "10.5 million articles are archived in PMC.",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971005"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h3",
+        "content": "2939",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971010"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h3",
+        "content": "Full Participation Journals",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971014"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "Journals deposit the complete contents of each issue or volume.",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971018"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h3",
+        "content": "279",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971022"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h3",
+        "content": "NIH Portfolio Journals",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971027"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "Journals deposit all NIH-funded articles as defined by the NIH Public Access Policy.",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971034"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h3",
+        "content": "43",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971038"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h3",
+        "content": "Selective Deposit Programs",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971042"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "Publisher deposits a subset of articles from a collection of journals.",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971046"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h2",
+        "content": "New in PMC",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971050"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h3",
+        "content": "PMC Transitions to Updated Website",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971056"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "PMC Transitions to Updated Website",
+        "link": "/about/new-in-pmc/#2024-10-21",
+        "scraped_at": "2024-12-14T18:47:49.971063"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "On October 16, 2024, NLM's NCBI transitioned to an updated PubMed Central (PMC) website, representing the next step in ongo…",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971070"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h3",
+        "content": "PMC Tagging Guidelines Accessibility Updates",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971075"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "PMC Tagging Guidelines Accessibility Updates",
+        "link": "/about/new-in-pmc/#2024-10-17",
+        "scraped_at": "2024-12-14T18:47:49.971080"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "The PMC Tagging Guidelines (TG) were updated on October 7, 2024, to provide new guidance for PMC data providers on how to de…",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971087"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "h2",
+        "content": "PMC Transitions to Updated Website",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971092"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "No content",
+        "link": "https://pmc.ncbi.nlm.nih.gov/about/new-in-pmc/#2024-10-21",
+        "scraped_at": "2024-12-14T18:47:49.971095"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "On October 16, 2024, NLM's NCBI transitioned to an updated PubMed Central (PMC) website, representing the next step in ongoing efforts to modernize NLM's products and services.",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971099"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "Read More",
+        "link": "https://pmc.ncbi.nlm.nih.gov/about/new-in-pmc/#2024-10-21",
+        "scraped_at": "2024-12-14T18:47:49.971103"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "NCBI on X (formerly known as Twitter)",
+        "link": "https://twitter.com/ncbi",
+        "scraped_at": "2024-12-14T18:47:49.971112"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "NCBI on Facebook",
+        "link": "https://www.facebook.com/ncbi.nlm",
+        "scraped_at": "2024-12-14T18:47:49.971121"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "NCBI on LinkedIn",
+        "link": "https://www.linkedin.com/company/ncbinlm",
+        "scraped_at": "2024-12-14T18:47:49.971132"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "NCBI on GitHub",
+        "link": "https://github.com/ncbi",
+        "scraped_at": "2024-12-14T18:47:49.971140"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "NCBI RSS feed",
+        "link": "https://ncbiinsights.ncbi.nlm.nih.gov/",
+        "scraped_at": "2024-12-14T18:47:49.971151"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "Connect with NLM",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971155"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "NLM on X (formerly known as Twitter)",
+        "link": "https://twitter.com/nlm_nih",
+        "scraped_at": "2024-12-14T18:47:49.971163"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "NLM on Facebook",
+        "link": "https://www.facebook.com/nationallibraryofmedicine",
+        "scraped_at": "2024-12-14T18:47:49.971171"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "NLM on YouTube",
+        "link": "https://www.youtube.com/user/NLMNIH",
+        "scraped_at": "2024-12-14T18:47:49.971180"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "p",
+        "content": "National Library of Medicine\n             8600 Rockville Pike Bethesda, MD 20894",
+        "link": null,
+        "scraped_at": "2024-12-14T18:47:49.971187"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "National Library of Medicine\n             8600 Rockville Pike Bethesda, MD 20894",
+        "link": "https://www.google.com/maps/place/8600+Rockville+Pike,+Bethesda,+MD+20894/%4038.9959508,\n            -77.101021,17z/data%3D!3m1!4b1!4m5!3m4!1s0x89b7c95e25765ddb%3A0x19156f88b27635b8!8m2!3d38.9959508!\n            4d-77.0988323",
+        "scraped_at": "2024-12-14T18:47:49.971192"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "Web Policies",
+        "link": "https://www.nlm.nih.gov/web_policies.html",
+        "scraped_at": "2024-12-14T18:47:49.971197"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "FOIA",
+        "link": "https://www.nih.gov/institutes-nih/nih-office-director/office-communications-public-liaison/freedom-information-act-office",
+        "scraped_at": "2024-12-14T18:47:49.971201"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "HHS Vulnerability Disclosure",
+        "link": "https://www.hhs.gov/vulnerability-disclosure-policy/index.html",
+        "scraped_at": "2024-12-14T18:47:49.971208"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "Help",
+        "link": "https://support.nlm.nih.gov/",
+        "scraped_at": "2024-12-14T18:47:49.971212"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "Accessibility",
+        "link": "https://www.nlm.nih.gov/accessibility.html",
+        "scraped_at": "2024-12-14T18:47:49.971216"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "Careers",
+        "link": "https://www.nlm.nih.gov/careers/careers.html",
+        "scraped_at": "2024-12-14T18:47:49.971220"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "NLM",
+        "link": "https://www.nlm.nih.gov/",
+        "scraped_at": "2024-12-14T18:47:49.971224"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "NIH",
+        "link": "https://www.nih.gov/",
+        "scraped_at": "2024-12-14T18:47:49.971228"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "HHS",
+        "link": "https://www.hhs.gov/",
+        "scraped_at": "2024-12-14T18:47:49.971232"
+    },
+    {
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/",
+        "tag": "a",
+        "content": "USA.gov",
+        "link": "https://www.usa.gov/",
+        "scraped_at": "2024-12-14T18:47:49.971240"
+    }
+]

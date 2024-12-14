@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="/static/css/style_cuestionario.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .options-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .option {
+            cursor: pointer;
+            padding: 20px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 8px;
+            width: 45%;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .option:hover {
+            background-color: #2980b9;
+        }
+        form {
+            display: none;
+        }
+        form.active {
+            display: block;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #388E3C;
+        }
+        p {
+            margin-top: 20px;
+        }
+        .question-text {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Inicia Sessió</h1>
+        <!-- Pregunta antes de seleccionar -->
+        <p class="question-text">Com vols iniciar sessió?</p>
+
+        <div class="options-container">
+            <div class="option" onclick="showForm('user')">Usuari</div>
+            <div class="option" onclick="showForm('medic')">Metge</div>
+        </div>
+
+        <!-- Formulario de usuario -->
+        <form id="user-form" method="POST">
+            <label for="health_card_number">Tarjeta Sanitària:</label>
+            <input type="text" id="health_card_number" name="health_card_number" required><br><br>
+            <label for="password">Contrasenya:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <button type="submit" name="login_as" value="user">Inicia Sessió</button>
+        </form>
+
+        <!-- Formulario de médico -->
+        <form id="medic-form" method="POST">
+            <label for="health_card_number_medic">Tarjeta Sanitària del Pacient:</label>
+            <input type="text" id="health_card_number_medic" name="health_card_number_medic" required><br><br>
+            <label for="medic_key">Clau de Metge:</label>
+            <input type="password" id="medic_key" name="medic_key" required><br><br>
+            <button type="submit" name="login_as" value="medic">Inicia Sessió</button>
+        </form>
+        
+        <p>No tens compte? <a href="/register"><button>Registrat aquí</button></a></p>
+    </div>
+
+    <script>
+        // Muestra el formulario seleccionado (usuario o médico)
+        function showForm(role) {
+            document.getElementById('user-form').classList.remove('active');
+            document.getElementById('medic-form').classList.remove('active');
+            document.getElementById(`${role}-form`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
