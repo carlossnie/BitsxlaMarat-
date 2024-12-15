@@ -127,6 +127,7 @@
             <li onclick="window.location.href='/centres_medics'">Centres mèdics propers</li>
             <li onclick="window.location.href='/novetats'">Novetats</li>
             <li onclick="window.location.href='/logout'" style="color: #e74c3c;">Tanca la sessió</li>
+            <li class="qr-button" onclick="window.location.href='/dashboard'">Veure el codi QR</li>
         </ul>
     </nav>
 
@@ -307,19 +308,16 @@
                     body: JSON.stringify(datos)
                 });
 
-                const data = await response.json();
-                if(data.status === "success") {
-                    alert('Canvis guardats correctament');
-                    // Reload the data to confirm changes
-                    await cargarDatosPerfil();
-                    // Then redirect
+                const result = await response.json();
+                if (result.status === "success") {
+                    alert('Los cambios se han guardado correctamente');
                     window.location.href = '/main';
                 } else {
-                    alert('Error al guardar els canvis: ' + data.message);
+                    alert('Error al guardar los cambios: ' + result.message);
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('Error al guardar els canvis');
+                alert('Error al guardar los cambios');
             }
         }
 

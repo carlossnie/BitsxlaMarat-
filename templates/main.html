@@ -102,6 +102,7 @@
             <li onclick="window.location.href='/centros'">Centres mèdics propers</li>
             <li onclick="window.location.href='/noticias'">Novetats</li>
             <li onclick="confirmLogout()" style="color: #e74c3c;">Tanca la sessió</li>
+            <li class="qr-button" onclick="window.location.href='/dashboard'">Veure el codi QR</li>
         </ul>
     </nav>
 
@@ -117,16 +118,16 @@
                     </h2>
                     <div class="section-divider"></div>
                     <p><strong>Fumador:</strong></p>
-                    <div class="info-box" id="fumador">Informació...</div>
+                    <div class="info-box" id="fumador">No hi ha dades</div>
 
                     <p><strong>Esports:</strong></p>
-                    <div class="info-box" id="esports">Informació...</div>
+                    <div class="info-box" id="esports">No hi ha dades</div>
 
                     <p><strong>Alcohol:</strong></p>
-                    <div class="info-box" id="alcohol">Informació...</div>
+                    <div class="info-box" id="alcohol">No hi ha dades</div>
 
                     <p><strong>Asma:</strong></p>
-                    <div class="info-box" id="asma">Informació...</div>
+                    <div class="info-box" id="asma">No hi ha dades</div>
                 </div>
 
                 <div class="info-column">
@@ -136,28 +137,28 @@
                     </h2>
                     <div class="section-divider"></div>
                     <p><strong>Tipus de MPID:</strong></p>
-                    <div class="info-box" id="mpid">Informació...</div>
+                    <div class="info-box" id="mpid">No hi ha dades</div>
 
                     <p><strong>Malalties Cròniques:</strong></p>
-                    <div class="info-box" id="malaltiesCroniques">Informació...</div>
+                    <div class="info-box" id="malaltiesCroniques">No hi ha dades</div>
 
                     <p><strong>Operacions Realitzades:</strong></p>
-                    <div class="info-box" id="operacions">Informació...</div>
+                    <div class="info-box" id="operacions">No hi ha dades</div>
 
                     <p><strong>Tractament Base:</strong></p>
-                    <div class="info-box" id="tractamentBase">Informació...</div>
+                    <div class="info-box" id="tractamentBase">No hi ha dades</div>
 
                     <p><strong>Immunosupressions:</strong></p>
-                    <div class="info-box" id="immunosupressions">Informació...</div>
+                    <div class="info-box" id="immunosupressions">No hi ha dades</div>
 
                     <p><strong>Comorbiditats:</strong></p>
-                    <div class="info-box" id="comorbiditats">Informació...</div>
+                    <div class="info-box" id="comorbiditats">No hi ha dades</div>
 
                     <p><strong>Antecedents de Malalties Rellevants:</strong></p>
-                    <div class="info-box" id="antecedents">Informació...</div>
+                    <div class="info-box" id="antecedents">No hi ha dades</div>
 
                     <p><strong>Medicació Actual:</strong></p>
-                    <div class="info-box" id="medicacio">Informació...</div>
+                    <div class="info-box" id="medicacio">No hi ha dades</div>
                 </div>
 
                 <div class="info-column">
@@ -166,29 +167,26 @@
                         <button class="edit-button" onclick="toggleEdit('contact')"></button>
                     </h2>
                     <div class="section-divider"></div>
-                    <p><strong>Nom:</strong></p>
-                    <div class="info-box" id="nom">Informació...</div>
-
-                    <p><strong>Cognoms:</strong></p>
-                    <div class="info-box" id="cognoms">Informació...</div>
+                    <p><strong>Nom Complet:</strong></p>
+                    <div class="info-box" id="nom">No hi ha dades</div>
 
                     <p><strong>Edat:</strong></p>
                     <div class="info-box" id="edat"></div>
 
                     <p><strong>Sexe:</strong></p>
-                    <div class="info-box" id="sexe">Informació...</div>
+                    <div class="info-box" id="sexe">No hi ha dades</div>
 
                     <p><strong>Targeta Sanitària:</strong></p>
-                    <div class="info-box" id="tarjetaSanitaria">Informació...</div>
+                    <div class="info-box" id="tarjetaSanitaria">No hi ha dades</div>
 
                     <p><strong>Direcció:</strong></p>
-                    <div class="info-box" id="direccio">Informació...</div>
+                    <div class="info-box" id="direccio">No hi ha dades</div>
 
                     <p><strong>Grup Sanguini:</strong></p>
                     <div class="info-box" id="grupSanguini"></div>
 
                     <p><strong>Telèfon:</strong></p>
-                    <div class="info-box" id="telefon">Informació...</div>
+                    <div class="info-box" id="telefon">No hi ha dades</div>
                 </div>
             </div>
         </div>
@@ -221,34 +219,33 @@
                 if (data.status === "success") {
                     // Cargar factores de riesgo
                     if (data.data.factores_riesgo) {
-                        document.getElementById('fumador').textContent = data.data.factores_riesgo.fumador || 'Informació...';
-                        document.getElementById('esports').textContent = data.data.factores_riesgo.esports || 'Informació...';
-                        document.getElementById('alcohol').textContent = data.data.factores_riesgo.alcohol || 'Informació...';
-                        document.getElementById('asma').textContent = data.data.factores_riesgo.asma || 'Informació...';
+                        document.getElementById('fumador').textContent = data.data.factores_riesgo.fumador || 'No hi ha dades';
+                        document.getElementById('esports').textContent = data.data.factores_riesgo.esports || 'No hi ha dades';
+                        document.getElementById('alcohol').textContent = data.data.factores_riesgo.alcohol || 'No hi ha dades';
+                        document.getElementById('asma').textContent = data.data.factores_riesgo.asma || 'No hi ha dades';
                     }
                     
                     // Cargar datos clínicos
                     if (data.data.datos_clinicos) {
-                        document.getElementById('mpid').textContent = data.data.datos_clinicos.mpid || 'Informació...';
-                        document.getElementById('malaltiesCroniques').textContent = data.data.datos_clinicos.malalties_croniques || 'Informació...';
-                        document.getElementById('operacions').textContent = data.data.datos_clinicos.operacions || 'Informació...';
-                        document.getElementById('tractamentBase').textContent = data.data.datos_clinicos.tractament_base || 'Informació...';
-                        document.getElementById('immunosupressions').textContent = data.data.datos_clinicos.immunosupressions || 'Informació...';
-                        document.getElementById('comorbiditats').textContent = data.data.datos_clinicos.comorbiditats || 'Informació...';
-                        document.getElementById('antecedents').textContent = data.data.datos_clinicos.antecedents || 'Informació...';
-                        document.getElementById('medicacio').textContent = data.data.datos_clinicos.medicacio || 'Informació...';
+                        document.getElementById('mpid').textContent = data.data.datos_clinicos.mpid || 'No hi ha dades';
+                        document.getElementById('malaltiesCroniques').textContent = data.data.datos_clinicos.malalties_croniques || 'No hi ha dades';
+                        document.getElementById('operacions').textContent = data.data.datos_clinicos.operacions || 'No hi ha dades';
+                        document.getElementById('tractamentBase').textContent = data.data.datos_clinicos.tractament_base || 'No hi ha dades';
+                        document.getElementById('immunosupressions').textContent = data.data.datos_clinicos.immunosupressions || 'No hi ha dades';
+                        document.getElementById('comorbiditats').textContent = data.data.datos_clinicos.comorbiditats || 'No hi ha dades';
+                        document.getElementById('antecedents').textContent = data.data.datos_clinicos.antecedents || 'No hi ha dades';
+                        document.getElementById('medicacio').textContent = data.data.datos_clinicos.medicacio || 'No hi ha dades';
                     }
                     
                     // Cargar datos personales
                     if (data.data.datos_personales) {
-                        document.getElementById('nom').textContent = data.data.datos_personales.nom || 'Informació...';
-                        document.getElementById('cognoms').textContent = data.data.datos_personales.cognoms || 'Informació...';
+                        document.getElementById('nom').textContent = data.data.datos_personales.nom || 'No hi ha dades';
                         document.getElementById('edat').textContent = data.data.datos_personales.edat || '';
-                        document.getElementById('sexe').textContent = data.data.datos_personales.sexe || 'Informació...';
-                        document.getElementById('tarjetaSanitaria').textContent = data.data.datos_personales.targeta_sanitaria || 'Informació...';
-                        document.getElementById('direccio').textContent = data.data.datos_personales.direccio || 'Informació...';
+                        document.getElementById('sexe').textContent = data.data.datos_personales.sexe || 'No hi ha dades';
+                        document.getElementById('tarjetaSanitaria').textContent = data.data.datos_personales.targeta_sanitaria || 'No hi ha dades';
+                        document.getElementById('direccio').textContent = data.data.datos_personales.direccio || 'No hi ha dades';
                         document.getElementById('grupSanguini').textContent = data.data.datos_personales.grup_sanguini || '';
-                        document.getElementById('telefon').textContent = data.data.datos_personales.telefon || 'Informació...';
+                        document.getElementById('telefon').textContent = data.data.datos_personales.telefon || 'No hi ha dades';
                     }
                 }
             } catch (error) {

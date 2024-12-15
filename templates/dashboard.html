@@ -29,7 +29,7 @@
     <h2>Escaneja el codi QR per veure el teu perfil.</h2>
     <img src="{{ url_for('static', filename=qr_code_path) }}" alt="QR Code">
     <div class="button-container">
-        <a href="home" class="button-home">Pàgina principal</a>
+        <a href="main" class="button-home">Pàgina principal</a>
         <a href="{{ url_for('static', filename=codi_qr) }}" download="codi_qr.png" class="button-download">Descarrega el codi</a>
     </div>
 

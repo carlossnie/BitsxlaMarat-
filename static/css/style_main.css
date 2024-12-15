@@ -287,3 +287,23 @@ nav ul li:hover {
         max-width: 100%;
     }
 }
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 40px);
+}
+
+nav ul li.qr-button {
+    margin-top: auto;
+    padding: 20px;
+    background-color: #3498db;
+    color: white !important;
+    text-align: center;
+    font-size: 1.2em;
+    border-top: 1px solid #ddd;
+}
+
+nav ul li.qr-button:hover {
+    background-color: #2980b9;
+}

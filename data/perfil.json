@@ -1,28 +1,28 @@
 {
     "factores_riesgo": {
-        "fumador": "Informació...",
-        "esports": "Informació...",
-        "alcohol": "Informació...",
-        "asma": "Informació..."
+        "fumador": "",
+        "esports": "",
+        "alcohol": "",
+        "asma": "Yes"
     },
     "datos_clinicos": {
-        "mpid": "Informació...",
-        "malalties_croniques": "Informació...",
-        "operacions": "Informació...",
-        "tractament_base": "Informació...",
-        "immunosupressions": "Informació...",
-        "comorbiditats": "dasdasds",
-        "antecedents": "Informació...",
-        "medicacio": "Informació..."
+        "mpid": "12323132c",
+        "malalties_croniques": "dsa",
+        "operacions": "dsa",
+        "tractament_base": "dsa",
+        "immunosupressions": "dsa",
+        "comorbiditats": "dsa",
+        "antecedents": "dsa",
+        "medicacio": "dsa"
     },
     "datos_personales": {
-        "nom": "Informació...",
-        "cognoms": "Informació...",
-        "edat": "",
-        "sexe": "Informació...",
-        "targeta_sanitaria": "Informació...",
-        "direccio": "Informació...",
-        "grup_sanguini": "",
-        "telefon": "Informació..."
+        "nom": "Oscar Mata Segura",
+        "cognoms": "",
+        "edat": "1",
+        "sexe": "ewq",
+        "targeta_sanitaria": "12345678",
+        "direccio": "ewq",
+        "grup_sanguini": "o",
+        "telefon": "321"
     }
 }

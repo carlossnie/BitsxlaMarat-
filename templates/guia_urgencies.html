@@ -181,6 +181,7 @@
             <li onclick="window.location.href='/centros'">Centres mèdics propers</li>
             <li onclick="window.location.href='/noticias'">Novetats</li>
             <li onclick="confirmLogout()" style="color: #e74c3c;">Tanca la sessió</li>
+            <li class="qr-button" onclick="window.location.href='/dashboard'">Veure el codi QR</li>
         </ul>
     </nav>
 
@@ -223,11 +224,25 @@
 
         function verificarClave() {
             const clave = document.getElementById('claveMedico').value;
-            if (clave === 'clave_correcta') {
-                document.getElementById('overlay').style.display = 'none';
-            } else {
-                alert('Clave incorrecta. Inténtelo de nuevo.');
-            }
+            fetch('/api/verificar_clave_medico', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ medic_key: clave })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('overlay').style.display = 'none';
+                } else {
+                    alert('Clau incorrecta. Intenta-ho de nou.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al verificar la clau.');
+            });
         }
 
         // Funció per actualitzar les recomanacions de la IA

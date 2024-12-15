@@ -212,21 +212,38 @@ def logout():
 def actualizar_perfil():
     try:
         datos = request.get_json()
-        # Make sure to update the user in MongoDB
-        users_collection.update_one(
+        
+        # Prepare the update document for MongoDB
+        update_data = {
+            "medical_info.smoker": datos["factores_riesgo"]["fumador"],
+            "medical_info.physical_activity": datos["factores_riesgo"]["esports"],
+            "medical_info.alcohol_consumption": datos["factores_riesgo"]["alcohol"],
+            "medical_info.asma": datos["factores_riesgo"]["asma"],
+            "medical_info.MPID": datos["datos_clinicos"]["mpid"],
+            "medical_info.diseases": datos["datos_clinicos"]["malalties_croniques"],
+            "medical_info.base_treatment": datos["datos_clinicos"]["tractament_base"],
+            "medical_info.immunosuppression": datos["datos_clinicos"]["immunosupressions"],
+            "medical_info.comorbidities": datos["datos_clinicos"]["comorbiditats"],
+            "medical_info.medications": datos["datos_clinicos"]["medicacio"],
+            "username": datos["datos_personales"]["nom"],
+            "medical_info.age": datos["datos_personales"]["edat"],
+            "medical_info.sex": datos["datos_personales"]["sexe"],
+            "health_card_number": datos["datos_personales"]["targeta_sanitaria"],
+            "medical_info.blood_type": datos["datos_personales"]["grup_sanguini"]
+        }
+        
+        # Update MongoDB
+        result = users_collection.update_one(
             {"_id": ObjectId(session["user_id"])},
-            {"$set": {
-                "medical_info": {
-                    **datos["factores_riesgo"],
-                    **datos["datos_clinicos"]
-                },
-                **datos["datos_personales"]
-            }}
+            {"$set": update_data}
         )
-        # Also update local storage
-        if local_db.actualizar_perfil(datos):
-            return jsonify({"status": "success"})
-        return jsonify({"status": "error", "message": "Error updating local database"})
+
+        if result.modified_count > 0:
+            # Also update local storage
+            if local_db.actualizar_perfil(datos):
+                return jsonify({"status": "success"})
+            return jsonify({"status": "error", "message": "Error updating local database"})
+        return jsonify({"status": "error", "message": "No changes were made"})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
@@ -288,6 +305,29 @@ def cargar_perfil():
         return jsonify(datos)
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route('/api/verificar_clave_medico', methods=['POST'])
+def verificar_clave_medico():
+    try:
+        data = request.get_json()
+        medic_key = data.get('medic_key')
+        
+        # Check if the key exists in the medics collection
+        medic = medics_collection.find_one({"medic_key": medic_key})
+        
+        if medic:
+            return jsonify({"status": "success"})
+        else:
+            return jsonify({"status": "error", "message": "Invalid medical key"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    user_id = session.get('user_id')
+    qr_filename = f"{user_id}.png"
+    return render_template('dashboard.html', qr_code_path=f"qrcodes/{qr_filename}", codi_qr=f"qrcodes/{qr_filename}")
 
 if __name__ == '__main__':
     os.makedirs('data', exist_ok=True)

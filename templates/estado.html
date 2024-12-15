@@ -148,6 +148,40 @@
             font-weight: bold;
             color: #2c3e50;
         }
+
+        /* New styles for pain slider */
+        .pain-slider {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .pain-slider input[type="range"] {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(to right, #2ecc71, #f1c40f, #e74c3c);
+        }
+
+        .pain-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #3498db;
+            cursor: pointer;
+        }
+
+        .pain-value {
+            min-width: 60px;
+            text-align: center;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.5em;
+        }
     </style>
 </head>
 <body>
@@ -161,6 +195,7 @@
             <li onclick="window.location.href='/centros'">Centres mèdics propers</li>
             <li onclick="window.location.href='/noticias'">Novetats</li>
             <li onclick="confirmLogout()" style="color: #e74c3c;">Tanca la sessió</li>
+            <li class="qr-button" onclick="window.location.href='/dashboard'">Veure el codi QR</li>
         </ul>
     </nav>
 
@@ -209,7 +244,10 @@
 
                     <div class="form-group">
                         <label for="pain">Nivell de dolor (0-10):</label>
-                        <input type="number" id="pain" name="pain" min="0" max="10" required>
+                        <div class="pain-slider">
+                            <input type="range" id="pain" name="pain" min="0" max="10" value="0">
+                            <span class="pain-value">😊</span>
+                        </div>
                     </div>
 
                     <div class="form-group">
@@ -351,6 +389,16 @@
             } else {
                 feverValue.style.color = '#2c3e50';
             }
+        });
+
+        // Update the value of the pain slider with emojis
+        const painSlider = document.getElementById('pain');
+        const painValue = painSlider.nextElementSibling;
+        
+        const painEmojis = ['😊', '🙂', '😐', '🙁', '😟', '😣', '😖', '😫', '😩', '🤒', '😭'];
+        
+        painSlider.addEventListener('input', function() {
+            painValue.textContent = painEmojis[this.value];
         });
 
         function confirmLogout() {
