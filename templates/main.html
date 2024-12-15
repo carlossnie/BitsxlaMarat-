@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido [MondongoTV]</title>
+    <link rel="stylesheet" href="/static/css/style_main.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav {
+            width: 250px; /* Menú estrecho */
+            background-color: #f4f4f4;
+            border-right: 1px solid #ddd;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+            transition: left 0.3s ease-in-out;
+        }
+        nav.closed {
+            left: -250px; /* Menú plegado */
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        nav ul li:hover {
+            background-color: #eaeaea;
+        }
+
+        .toggle-menu {
+            position: absolute;
+            top: 20px;
+            left: 100%;
+            width: 30px;
+            height: 30px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .content {
+            margin-left: 250px; /* Alineación del contenido con el menú */
+            padding: 20px;
+            width: 100%;
+        }
+
+        .info-container {
+            display: flex;
+            justify-content: flex-start; /* Cambiar a flex-start para desplazar a la izquierda */
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-left: 0; /* Eliminar margen izquierdo */
+            padding-left: 20px; /* Añadir padding izquierdo para alinear con el subtítulo */
+            padding-right: 20px; /* Añadir padding derecho para evitar que el texto esté muy pegado a la derecha */
+        }
+
+        .info-column {
+            width: calc(33.33% - 40px); /* Ajustar el ancho de las columnas para que no se solapen con el menú */
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        .info-box.editable {
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        #edat, #grupSanguini {
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <div class="toggle-menu" onclick="toggleMenu()">&#8594;</div> <!-- Pestaña para desplegar y plegar el menú -->
+        <ul>
+            <li onclick="window.location.href='/main'">Perfil</li>
+            <li onclick="window.location.href='/estado'">Com em trobo</li>
+            <li onclick="window.location.href='/urgencias'">Guia urgències</li>
+            <li onclick="window.location.href='/historial'">Historial de proves</li>
+            <li onclick="window.location.href='/centros'">Centres mèdics propers</li>
+            <li onclick="window.location.href='/noticias'">Novetats</li>
+            <li onclick="confirmLogout()" style="color: #e74c3c;">Tanca la sessió</li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="container">
+            <h1>Perfil</h1>
+            <p>Benvingut a la pàgina del perfil. Aquí pots veure i editar la teva informació personal.</p>
+
+            <div class="info-container">
+                <div class="info-column">
+                    <h2>
+                        Factors de risc
+                    </h2>
+                    <div class="section-divider"></div>
+                    <p><strong>Fumador:</strong></p>
+                    <div class="info-box" id="fumador">Informació...</div>
+
+                    <p><strong>Esports:</strong></p>
+                    <div class="info-box" id="esports">Informació...</div>
+
+                    <p><strong>Alcohol:</strong></p>
+                    <div class="info-box" id="alcohol">Informació...</div>
+
+                    <p><strong>Asma:</strong></p>
+                    <div class="info-box" id="asma">Informació...</div>
+                </div>
+
+                <div class="info-column">
+                    <h2>
+                        Dades cliníques
+                        <button class="edit-button" onclick="toggleEdit('personal')"></button>
+                    </h2>
+                    <div class="section-divider"></div>
+                    <p><strong>Tipus de MPID:</strong></p>
+                    <div class="info-box" id="mpid">Informació...</div>
+
+                    <p><strong>Malalties Cròniques:</strong></p>
+                    <div class="info-box" id="malaltiesCroniques">Informació...</div>
+
+                    <p><strong>Operacions Realitzades:</strong></p>
+                    <div class="info-box" id="operacions">Informació...</div>
+
+                    <p><strong>Tractament Base:</strong></p>
+                    <div class="info-box" id="tractamentBase">Informació...</div>
+
+                    <p><strong>Immunosupressions:</strong></p>
+                    <div class="info-box" id="immunosupressions">Informació...</div>
+
+                    <p><strong>Comorbiditats:</strong></p>
+                    <div class="info-box" id="comorbiditats">Informació...</div>
+
+                    <p><strong>Antecedents de Malalties Rellevants:</strong></p>
+                    <div class="info-box" id="antecedents">Informació...</div>
+
+                    <p><strong>Medicació Actual:</strong></p>
+                    <div class="info-box" id="medicacio">Informació...</div>
+                </div>
+
+                <div class="info-column">
+                    <h2>
+                        Dades personals
+                        <button class="edit-button" onclick="toggleEdit('contact')"></button>
+                    </h2>
+                    <div class="section-divider"></div>
+                    <p><strong>Nom:</strong></p>
+                    <div class="info-box" id="nom">Informació...</div>
+
+                    <p><strong>Cognoms:</strong></p>
+                    <div class="info-box" id="cognoms">Informació...</div>
+
+                    <p><strong>Edat:</strong></p>
+                    <div class="info-box" id="edat"></div>
+
+                    <p><strong>Sexe:</strong></p>
+                    <div class="info-box" id="sexe">Informació...</div>
+
+                    <p><strong>Targeta Sanitària:</strong></p>
+                    <div class="info-box" id="tarjetaSanitaria">Informació...</div>
+
+                    <p><strong>Direcció:</strong></p>
+                    <div class="info-box" id="direccio">Informació...</div>
+
+                    <p><strong>Grup Sanguini:</strong></p>
+                    <div class="info-box" id="grupSanguini"></div>
+
+                    <p><strong>Telèfon:</strong></p>
+                    <div class="info-box" id="telefon">Informació...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var nav = document.getElementById('nav');
+            nav.classList.toggle('closed');
+            var toggleIcon = nav.classList.contains('closed') ? '&#8594;' : '&#8592;';
+            document.querySelector('.toggle-menu').innerHTML = toggleIcon;
+        }
+        
+        function toggleEdit(section) {
+            // Change to relative path
+            window.location.href = '/perfil?section=' + section;
+        }
+
+        // Función para cargar los datos del perfil
+        async function cargarDatosPerfil() {
+            try {
+                // Get user_id from URL if present
+                const urlParams = new URLSearchParams(window.location.pathname.split('/main/')[1] || '');
+                const userId = urlParams.get(0); // get first parameter from path
+                const url = userId ? `/api/cargar_perfil?user_id=${userId}` : '/api/cargar_perfil';
+                
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (data.status === "success") {
+                    // Cargar factores de riesgo
+                    if (data.data.factores_riesgo) {
+                        document.getElementById('fumador').textContent = data.data.factores_riesgo.fumador || 'Informació...';
+                        document.getElementById('esports').textContent = data.data.factores_riesgo.esports || 'Informació...';
+                        document.getElementById('alcohol').textContent = data.data.factores_riesgo.alcohol || 'Informació...';
+                        document.getElementById('asma').textContent = data.data.factores_riesgo.asma || 'Informació...';
+                    }
+                    
+                    // Cargar datos clínicos
+                    if (data.data.datos_clinicos) {
+                        document.getElementById('mpid').textContent = data.data.datos_clinicos.mpid || 'Informació...';
+                        document.getElementById('malaltiesCroniques').textContent = data.data.datos_clinicos.malalties_croniques || 'Informació...';
+                        document.getElementById('operacions').textContent = data.data.datos_clinicos.operacions || 'Informació...';
+                        document.getElementById('tractamentBase').textContent = data.data.datos_clinicos.tractament_base || 'Informació...';
+                        document.getElementById('immunosupressions').textContent = data.data.datos_clinicos.immunosupressions || 'Informació...';
+                        document.getElementById('comorbiditats').textContent = data.data.datos_clinicos.comorbiditats || 'Informació...';
+                        document.getElementById('antecedents').textContent = data.data.datos_clinicos.antecedents || 'Informació...';
+                        document.getElementById('medicacio').textContent = data.data.datos_clinicos.medicacio || 'Informació...';
+                    }
+                    
+                    // Cargar datos personales
+                    if (data.data.datos_personales) {
+                        document.getElementById('nom').textContent = data.data.datos_personales.nom || 'Informació...';
+                        document.getElementById('cognoms').textContent = data.data.datos_personales.cognoms || 'Informació...';
+                        document.getElementById('edat').textContent = data.data.datos_personales.edat || '';
+                        document.getElementById('sexe').textContent = data.data.datos_personales.sexe || 'Informació...';
+                        document.getElementById('tarjetaSanitaria').textContent = data.data.datos_personales.targeta_sanitaria || 'Informació...';
+                        document.getElementById('direccio').textContent = data.data.datos_personales.direccio || 'Informació...';
+                        document.getElementById('grupSanguini').textContent = data.data.datos_personales.grup_sanguini || '';
+                        document.getElementById('telefon').textContent = data.data.datos_personales.telefon || 'Informació...';
+                    }
+                }
+            } catch (error) {
+                console.error('Error al cargar datos:', error);
+            }
+        }
+
+        // Cargar datos cuando la página se inicie
+        window.onload = function() {
+            cargarDatosPerfil();
+        };
+
+        function confirmLogout() {
+            if (confirm("Estàs segur que vols tancar la sessió?")) {
+                window.location.href = '/logout';
+            }
+        }
+    </script>
+</body>
+</html>

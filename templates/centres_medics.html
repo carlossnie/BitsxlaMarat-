@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centres Mèdics [MondongoTV]</title>
+    <link rel="stylesheet" href="/static/css/style_main.css">
+    <style>
+        /* Estilos específicos para centros médicos */
+        .centers-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .center-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .center-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .center-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .center-type {
+            color: #3498db;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .center-address {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .center-phone {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .distance {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-button {
+            padding: 5px 15px;
+            border: none;
+            border-radius: 15px;
+            background: #f0f0f0;
+            cursor: pointer;
+        }
+
+        .filter-button.active {
+            background: #3498db;
+            color: white;
+        }
+
+        /* Estilo del menú actualizado para coincidir con estado.html */
+        nav {
+            width: 250px;
+            background-color: #f4f4f4;
+            border-right: 1px solid #ddd;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+            transition: left 0.3s ease-in-out;
+        }
+
+        nav.closed {
+            left: -250px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        nav ul li:hover {
+            background-color: #eaeaea;
+        }
+
+        .toggle-menu {
+            position: absolute;
+            top: 20px;
+            left: 100%;
+            width: 30px;
+            height: 30px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .container {
+            width: calc(100% - 350px);
+            max-width: calc(100vw - 370px);
+            margin: 20px 20px 20px 120px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <div class="toggle-menu" onclick="toggleMenu()">&#8594;</div>
+        <ul>
+            <li onclick="window.location.href='/main'">Perfil</li>
+            <li onclick="window.location.href='/estado'">Com em trobo</li>
+            <li onclick="window.location.href='/urgencias'">Guia urgències</li>
+            <li onclick="window.location.href='/historial'">Historial de proves</li>
+            <li onclick="window.location.href='/centros'">Centres mèdics propers</li>
+            <li onclick="window.location.href='/noticias'">Novetats</li>
+            <li onclick="confirmLogout()" style="color: #e74c3c;">Tanca la sessió</li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="container">
+            <h1>Centres Mèdics Propers</h1>
+            
+            <div class="search-box">
+                <input type="text" placeholder="Cerca per nom o adreça..." id="searchInput">
+                <div class="filter-options">
+                    <button class="filter-button active" data-type="all">Tots</button>
+                    <button class="filter-button" data-type="hospital">Hospitals</button>
+                    <button class="filter-button" data-type="cap">CAPs</button>
+                    <button class="filter-button" data-type="urgent">Urgències</button>
+                </div>
+            </div>
+
+            <div class="centers-container" id="centersList">
+                <!-- Los centros médicos se añadirán dinámicamente aquí -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var nav = document.getElementById('nav');
+            nav.classList.toggle('closed');
+            var toggleIcon = nav.classList.contains('closed') ? '&#8594;' : '&#8592;';
+            document.querySelector('.toggle-menu').innerHTML = toggleIcon;
+        }
+
+        // Función para obtener la ubicación del usuario
+        function getUserLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(loadNearbyCenters);
+            } else {
+                alert("La geolocalització no està disponible en aquest navegador.");
+            }
+        }
+
+        // Función para cargar centros cercanos
+        function loadNearbyCenters(position) {
+            // Aquí iría la lógica para cargar centros médicos cercanos
+            // usando la posición del usuario (position.coords.latitude, position.coords.longitude)
+            const centersList = document.getElementById('centersList');
+            centersList.innerHTML = '<div class="center-card">Carregant centres propers...</div>';
+        }
+
+        // Inicializar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            getUserLocation();
+        });
+
+        function confirmLogout() {
+            if (confirm("Estàs segur que vols tancar la sessió?")) {
+                window.location.href = '/logout';
+            }
+        }
+    </script>
+</body>
+</html>

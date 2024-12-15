@@ -1,0 +1,28 @@
+{
+    "factores_riesgo": {
+        "fumador": "Informació...",
+        "esports": "Informació...",
+        "alcohol": "Informació...",
+        "asma": "Informació..."
+    },
+    "datos_clinicos": {
+        "mpid": "Informació...",
+        "malalties_croniques": "Informació...",
+        "operacions": "Informació...",
+        "tractament_base": "Informació...",
+        "immunosupressions": "Informació...",
+        "comorbiditats": "dasdasds",
+        "antecedents": "Informació...",
+        "medicacio": "Informació..."
+    },
+    "datos_personales": {
+        "nom": "Informació...",
+        "cognoms": "Informació...",
+        "edat": "",
+        "sexe": "Informació...",
+        "targeta_sanitaria": "Informació...",
+        "direccio": "Informació...",
+        "grup_sanguini": "",
+        "telefon": "Informació..."
+    }
+}

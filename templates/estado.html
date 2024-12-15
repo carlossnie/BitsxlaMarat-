@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Com em trobo [MondongoTV]</title>
+    <link rel="stylesheet" href="/static/css/style_main.css">
+    <style>
+        .symptom-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-button:hover {
+            background-color: #2980b9;
+        }
+
+        .motivation-box {
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .symptoms-history {
+            margin-top: 30px;
+        }
+
+        .date-select {
+            margin-bottom: 20px;
+        }
+
+        /* Estilos del menú desplegable */
+        nav {
+            width: 250px;
+            background-color: #f4f4f4;
+            border-right: 1px solid #ddd;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+            transition: left 0.3s ease-in-out;
+        }
+        nav.closed {
+            left: -250px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        nav ul li:hover {
+            background-color: #eaeaea;
+        }
+
+        .toggle-menu {
+            position: absolute;
+            top: 20px;
+            left: 100%;
+            width: 30px;
+            height: 30px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+        
+        .fever-slider {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .fever-slider input[type="range"] {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(to right, #2ecc71, #f1c40f, #e74c3c);
+        }
+
+        .fever-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #3498db;
+            cursor: pointer;
+        }
+
+        .fever-value {
+            min-width: 60px;
+            text-align: center;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <div class="toggle-menu" onclick="toggleMenu()">&#8594;</div>
+        <ul>
+            <li onclick="window.location.href='/main'">Perfil</li>
+            <li onclick="window.location.href='/estado'">Com em trobo</li>
+            <li onclick="window.location.href='/urgencias'">Guia urgències</li>
+            <li onclick="window.location.href='/historial'">Historial de proves</li>
+            <li onclick="window.location.href='/centros'">Centres mèdics propers</li>
+            <li onclick="window.location.href='/noticias'">Novetats</li>
+            <li onclick="confirmLogout()" style="color: #e74c3c;">Tanca la sessió</li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="container">
+            <h1>Com em trobo avui?</h1>
+            
+            <div class="motivation-box">
+                <h3>🌟 El teu benestar és important!</h3>
+                <p>Registrar els teus símptomes diàriament ens ajuda a detectar possibles problemes de salut de manera prematura. 
+                   Això permet una intervenció més ràpida i eficaç. La teva participació activa en el seguiment de la teva salut 
+                   és fonamental per a una millor atenció mèdica.</p>
+            </div>
+
+            <div class="symptom-form">
+                <form id="symptomForm">
+                    <div class="form-group">
+                        <label for="date">Data:</label>
+                        <input type="date" id="date" name="date" required readonly style="background-color: #f4f4f4; cursor: not-allowed;">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="generalState">Estat general:</label>
+                        <select id="generalState" name="generalState" required>
+                            <option value="">Selecciona una opció</option>
+                            <option value="molt-be">Molt bé</option>
+                            <option value="be">Bé</option>
+                            <option value="regular">Regular</option>
+                            <option value="malament">Malament</option>
+                            <option value="molt-malament">Molt malament</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="symptoms">Símptomes específics:</label>
+                        <textarea id="symptoms" name="symptoms" placeholder="Descriu els teus símptomes..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fever">Temperatura (°C):</label>
+                        <div class="fever-slider">
+                            <input type="range" id="fever" name="fever" min="35" max="42" step="0.1" value="36.5">
+                            <span class="fever-value">36.5°C</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pain">Nivell de dolor (0-10):</label>
+                        <input type="number" id="pain" name="pain" min="0" max="10" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Notes addicionals:</label>
+                        <textarea id="notes" name="notes" placeholder="Qualsevol altra observació..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Guardar Registre</button>
+                </form>
+            </div>
+
+            <div class="symptoms-history">
+                <h2>Historial de Símptomes</h2>
+                <div class="date-select">
+                    <label for="historyDate">Veure registre del dia:</label>
+                    <input type="date" id="historyDate" onchange="loadSymptoms(this.value)">
+                </div>
+                <div id="symptomsRecord" class="info-box">
+                    Selecciona una data per veure el registre
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Agrega la función toggleMenu al inicio del script
+        function toggleMenu() {
+            var nav = document.getElementById('nav');
+            nav.classList.toggle('closed');
+            var toggleIcon = nav.classList.contains('closed') ? '&#8594;' : '&#8592;';
+            document.querySelector('.toggle-menu').innerHTML = toggleIcon;
+        }
+
+        document.getElementById('symptomForm').onsubmit = function(e) {
+            e.preventDefault();
+            const datos = {
+                estado_general: document.getElementById('generalState').value,
+                sintomas_especificos: document.getElementById('symptoms').value,
+                temperatura: document.getElementById('fever').value,
+                nivel_dolor: document.getElementById('pain').value,
+                notas: document.getElementById('notes').value
+            };
+            
+            fetch('/api/guardar_sintomas', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(datos)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === "success") {
+                    alert('Registre guardat correctament');
+                    loadSymptoms(document.getElementById('historyDate').value);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al guardar el registre');
+            });
+        };
+
+        function loadSymptoms(fecha) {
+            if (!fecha) return;
+            
+            fetch(`/api/historial_sintomas/${fecha}`)
+            .then(response => response.json())
+            .then(data => {
+                const symptomsRecord = document.getElementById('symptomsRecord');
+                if (data.status === "success") {
+                    symptomsRecord.innerHTML = `
+                        <div class="symptom-record">
+                            <h3>Registre del dia ${data.data.fecha_registro}</h3>
+                            <p><strong>Estat general:</strong> ${data.data.estado_general}</p>
+                            <p><strong>Temperatura:</strong> ${data.data.temperatura}°C</p>
+                            <p><strong>Nivell de dolor:</strong> ${data.data.nivel_dolor}/10</p>
+                            <p><strong>Símptomes específics:</strong></p>
+                            <div class="symptom-details">${data.data.sintomas_especificos}</div>
+                            <p><strong>Notes:</strong></p>
+                            <div class="symptom-notes">${data.data.notas}</div>
+                        </div>
+                    `;
+                } else {
+                    symptomsRecord.innerHTML = `<p>No hi ha registres per aquesta data</p>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('symptomsRecord').innerHTML = 
+                    '<p>Error al carregar els símptomes</p>';
+            });
+        }
+
+        // Añadir estilos para el historial
+        const style = document.createElement('style');
+        style.textContent = `
+            .symptom-record {
+                padding: 15px;
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .symptom-record h3 {
+                color: #2c3e50;
+                margin-bottom: 15px;
+            }
+            .symptom-details, .symptom-notes {
+                background: #f8f9fa;
+                padding: 10px;
+                border-radius: 4px;
+                margin: 5px 0 15px 0;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Establecer la fecha actual y desactivar la edición
+        const today = new Date();
+        const dateInput = document.getElementById('date');
+        dateInput.valueAsDate = today;
+        dateInput.setAttribute('readonly', true);
+        dateInput.addEventListener('click', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Actualizar el valor de la temperatura
+        const feverSlider = document.getElementById('fever');
+        const feverValue = feverSlider.nextElementSibling;
+        
+        feverSlider.addEventListener('input', function() {
+            feverValue.textContent = this.value + '°C';
+            
+            // Cambiar el color del texto según la temperatura
+            if (this.value >= 38) {
+                feverValue.style.color = '#e74c3c';
+            } else if (this.value >= 37) {
+                feverValue.style.color = '#f1c40f';
+            } else {
+                feverValue.style.color = '#2c3e50';
+            }
+        });
+
+        function confirmLogout() {
+            if (confirm("Estàs segur que vols tancar la sessió?")) {
+                window.location.href = '/logout';
+            }
+        }
+    </script>
+</body>
+</html>
