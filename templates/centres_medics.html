@@ -232,3 +232,56 @@
     </script>
 </body>
 </html>
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Centres Mèdics Propers</h2>
+    
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% else %}
+        <div id="map-container" style="width: 100%; height: 500px;">
+            {{ map_html | safe }}
+        </div>
+        
+        <div class="hospitals-list">
+            <h3>Hospitals més propers:</h3>
+            <ul>
+                {% for hospital in hospitals %}
+                <li>
+                    <strong>{{ hospital.name }}</strong>
+                    <br>
+                    Coordenades: {{ hospital.latitude }}, {{ hospital.longitude }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+
+<style>
+    .container {
+        padding: 20px;
+    }
+    #map-container {
+        margin: 20px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .hospitals-list {
+        margin-top: 20px;
+    }
+    .hospitals-list ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .hospitals-list li {
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #eee;
+        border-radius: 4px;
+    }
+</style>
+{% endblock %}

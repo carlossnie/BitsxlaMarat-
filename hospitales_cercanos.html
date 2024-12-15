@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c18361754e18ee5a17c0af9591db81d9 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_c18361754e18ee5a17c0af9591db81d9" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c18361754e18ee5a17c0af9591db81d9 = L.map(
+                "map_c18361754e18ee5a17c0af9591db81d9",
+                {
+                    center: [41.4036, 2.1744],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_339d6753f90667024327b3f3e9ff0a4d = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_339d6753f90667024327b3f3e9ff0a4d.addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var marker_2434ca198edec6cc4daf415edf713402 = L.marker(
+                [41.4111635, 2.1590499],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_5520393ceca277ad43f6522716165e37 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_2434ca198edec6cc4daf415edf713402.setIcon(icon_5520393ceca277ad43f6522716165e37);
+        
+    
+        var popup_652c968d29a470faa64b21fb4be9b606 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8beff994fc807ad66f13cf2f5975f81f = $(`<div id="html_8beff994fc807ad66f13cf2f5975f81f" style="width: 100.0%; height: 100.0%;">Hospital Evangèlic</div>`)[0];
+                popup_652c968d29a470faa64b21fb4be9b606.setContent(html_8beff994fc807ad66f13cf2f5975f81f);
+            
+        
+
+        marker_2434ca198edec6cc4daf415edf713402.bindPopup(popup_652c968d29a470faa64b21fb4be9b606)
+        ;
+
+        
+    
+    
+            var marker_477a6f89881ef68a03909e75a9ec213c = L.marker(
+                [41.3970879, 2.1733003],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_58e980632a3bca26905517b7b5a4cc7f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_477a6f89881ef68a03909e75a9ec213c.setIcon(icon_58e980632a3bca26905517b7b5a4cc7f);
+        
+    
+        var popup_8b54e4dab63c06fb2eadbf389de096ec = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2e6ca669563b4eb698d1e1d32db678af = $(`<div id="html_2e6ca669563b4eb698d1e1d32db678af" style="width: 100.0%; height: 100.0%;">Hospital de Nens de Barcelona</div>`)[0];
+                popup_8b54e4dab63c06fb2eadbf389de096ec.setContent(html_2e6ca669563b4eb698d1e1d32db678af);
+            
+        
+
+        marker_477a6f89881ef68a03909e75a9ec213c.bindPopup(popup_8b54e4dab63c06fb2eadbf389de096ec)
+        ;
+
+        
+    
+    
+            var marker_3e9c1f8f8ca2dd1490f7a23f6a12399b = L.marker(
+                [41.400939, 2.1636033],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_6a590ff37acea90a14bc7b88d20692b6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_3e9c1f8f8ca2dd1490f7a23f6a12399b.setIcon(icon_6a590ff37acea90a14bc7b88d20692b6);
+        
+    
+        var popup_1b884aa81b55dac814ad57b2e51f9e28 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0df0c3ce194c5faa1b0f06ae1a0ed6f4 = $(`<div id="html_0df0c3ce194c5faa1b0f06ae1a0ed6f4" style="width: 100.0%; height: 100.0%;">Fundació Eulàlia Torras de Beà</div>`)[0];
+                popup_1b884aa81b55dac814ad57b2e51f9e28.setContent(html_0df0c3ce194c5faa1b0f06ae1a0ed6f4);
+            
+        
+
+        marker_3e9c1f8f8ca2dd1490f7a23f6a12399b.bindPopup(popup_1b884aa81b55dac814ad57b2e51f9e28)
+        ;
+
+        
+    
+    
+            var marker_46a13920e2805cf1b0212b946f6ce57b = L.marker(
+                [41.4257913, 2.1409654],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_4da294a4fbc63511190e2cbfb4df92b5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_46a13920e2805cf1b0212b946f6ce57b.setIcon(icon_4da294a4fbc63511190e2cbfb4df92b5);
+        
+    
+        var popup_76b183a9b46922fa7f8e424101af7165 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_845eda6d4790d1242206a10b5700b534 = $(`<div id="html_845eda6d4790d1242206a10b5700b534" style="width: 100.0%; height: 100.0%;">Hospital Sant Rafael</div>`)[0];
+                popup_76b183a9b46922fa7f8e424101af7165.setContent(html_845eda6d4790d1242206a10b5700b534);
+            
+        
+
+        marker_46a13920e2805cf1b0212b946f6ce57b.bindPopup(popup_76b183a9b46922fa7f8e424101af7165)
+        ;
+
+        
+    
+    
+            var marker_35a0dd7796597f1848557bd2d394cf03 = L.marker(
+                [41.4378737, 2.2128933],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_97bad0367142173df3e8fa4212a99110 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_35a0dd7796597f1848557bd2d394cf03.setIcon(icon_97bad0367142173df3e8fa4212a99110);
+        
+    
+        var popup_4d8d109d136b34f84c5a7f1e5efe19ce = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8af6f81af955b72ad4bbaf019565d3c7 = $(`<div id="html_8af6f81af955b72ad4bbaf019565d3c7" style="width: 100.0%; height: 100.0%;">Hospital de l'Esperit Sant</div>`)[0];
+                popup_4d8d109d136b34f84c5a7f1e5efe19ce.setContent(html_8af6f81af955b72ad4bbaf019565d3c7);
+            
+        
+
+        marker_35a0dd7796597f1848557bd2d394cf03.bindPopup(popup_4d8d109d136b34f84c5a7f1e5efe19ce)
+        ;
+
+        
+    
+    
+            var marker_95f475196b7671a27f4a9bad11734b11 = L.marker(
+                [41.4160141, 2.1407119],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_1fdff0eb053a6eae48392245982c062c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_95f475196b7671a27f4a9bad11734b11.setIcon(icon_1fdff0eb053a6eae48392245982c062c);
+        
+    
+        var popup_024ca5be42d2be2dde04b77f5cb8fc97 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5dcfdaa11db50756ec3cddd347f0a433 = $(`<div id="html_5dcfdaa11db50756ec3cddd347f0a433" style="width: 100.0%; height: 100.0%;">Unitat Cirurgia sense ingrés Vall d'Hebron</div>`)[0];
+                popup_024ca5be42d2be2dde04b77f5cb8fc97.setContent(html_5dcfdaa11db50756ec3cddd347f0a433);
+            
+        
+
+        marker_95f475196b7671a27f4a9bad11734b11.bindPopup(popup_024ca5be42d2be2dde04b77f5cb8fc97)
+        ;
+
+        
+    
+    
+            var marker_eb75d41a0e9dacf844cfd08471608783 = L.marker(
+                [41.4146719, 2.1404962],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_ffdc5786c3cd67c2840547f7fc9bf6fa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_eb75d41a0e9dacf844cfd08471608783.setIcon(icon_ffdc5786c3cd67c2840547f7fc9bf6fa);
+        
+    
+        var popup_3433d236ac4c2b14104b4ba713be7982 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_db1a6857a3f30af7b732ae2344f300f6 = $(`<div id="html_db1a6857a3f30af7b732ae2344f300f6" style="width: 100.0%; height: 100.0%;">Hospital Vall d'Hebron. Edifici Garbí</div>`)[0];
+                popup_3433d236ac4c2b14104b4ba713be7982.setContent(html_db1a6857a3f30af7b732ae2344f300f6);
+            
+        
+
+        marker_eb75d41a0e9dacf844cfd08471608783.bindPopup(popup_3433d236ac4c2b14104b4ba713be7982)
+        ;
+
+        
+    
+    
+            var marker_63636651a82a86c1eda27e43efbf1532 = L.marker(
+                [41.4001334, 2.1482111],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_4aadee6873dce1e472ecd3a12051760d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_63636651a82a86c1eda27e43efbf1532.setIcon(icon_4aadee6873dce1e472ecd3a12051760d);
+        
+    
+        var popup_c9f74b82a1fc0330a9d3b7d9627d8c61 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b8d8db2a4ba8def7450eef1153ca149f = $(`<div id="html_b8d8db2a4ba8def7450eef1153ca149f" style="width: 100.0%; height: 100.0%;">Hospital El Pilar</div>`)[0];
+                popup_c9f74b82a1fc0330a9d3b7d9627d8c61.setContent(html_b8d8db2a4ba8def7450eef1153ca149f);
+            
+        
+
+        marker_63636651a82a86c1eda27e43efbf1532.bindPopup(popup_c9f74b82a1fc0330a9d3b7d9627d8c61)
+        ;
+
+        
+    
+    
+            var marker_60ad6e97973b2b1a44602feebc1b04f7 = L.marker(
+                [41.4063869, 2.1278903],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_91941daf166ed80bff92b5927551f181 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_60ad6e97973b2b1a44602feebc1b04f7.setIcon(icon_91941daf166ed80bff92b5927551f181);
+        
+    
+        var popup_67603deb18e76c61744e58294d701bbd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3250e9c55be8549589651775a7622dc7 = $(`<div id="html_3250e9c55be8549589651775a7622dc7" style="width: 100.0%; height: 100.0%;">Clínica Teknon</div>`)[0];
+                popup_67603deb18e76c61744e58294d701bbd.setContent(html_3250e9c55be8549589651775a7622dc7);
+            
+        
+
+        marker_60ad6e97973b2b1a44602feebc1b04f7.bindPopup(popup_67603deb18e76c61744e58294d701bbd)
+        ;
+
+        
+    
+    
+            var marker_d2594540bf19732b08c12e37b9199665 = L.marker(
+                [41.4355012, 2.1456184],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_204a83a78ddc01103c09b9e1ea623c41 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_d2594540bf19732b08c12e37b9199665.setIcon(icon_204a83a78ddc01103c09b9e1ea623c41);
+        
+    
+        var popup_4676832f7f7d9159e3cfc80c1a24a76f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d4fe9a16929e54583d1275d8f7f0ca7a = $(`<div id="html_d4fe9a16929e54583d1275d8f7f0ca7a" style="width: 100.0%; height: 100.0%;">Hospital de Sant Miquel. Fundació Alba</div>`)[0];
+                popup_4676832f7f7d9159e3cfc80c1a24a76f.setContent(html_d4fe9a16929e54583d1275d8f7f0ca7a);
+            
+        
+
+        marker_d2594540bf19732b08c12e37b9199665.bindPopup(popup_4676832f7f7d9159e3cfc80c1a24a76f)
+        ;
+
+        
+    
+    
+            var marker_c45d0c4ffde34164f0f2d1c397fc17e0 = L.marker(
+                [41.4013987, 2.1944986],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_92c2153f598d2330560faaebcd31bce7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_c45d0c4ffde34164f0f2d1c397fc17e0.setIcon(icon_92c2153f598d2330560faaebcd31bce7);
+        
+    
+        var popup_b2e8c474a3c002a3ad24af4c66193514 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ea7642f05ed96ad5d9349c7fb9d9246b = $(`<div id="html_ea7642f05ed96ad5d9349c7fb9d9246b" style="width: 100.0%; height: 100.0%;">Hospital Evangelic</div>`)[0];
+                popup_b2e8c474a3c002a3ad24af4c66193514.setContent(html_ea7642f05ed96ad5d9349c7fb9d9246b);
+            
+        
+
+        marker_c45d0c4ffde34164f0f2d1c397fc17e0.bindPopup(popup_b2e8c474a3c002a3ad24af4c66193514)
+        ;
+
+        
+    
+    
+            var marker_1440c87c610d5219318969ad4ee007b6 = L.marker(
+                [41.41066, 2.1545767],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_9ab5d733ae868bb77edc08f16d1614d2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_1440c87c610d5219318969ad4ee007b6.setIcon(icon_9ab5d733ae868bb77edc08f16d1614d2);
+        
+    
+        var popup_d16ec74917687d0935b86277ca25e60b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c8aeae4d12c63c85cbb5fe56473cf915 = $(`<div id="html_c8aeae4d12c63c85cbb5fe56473cf915" style="width: 100.0%; height: 100.0%;">Hospital de l'Esperança</div>`)[0];
+                popup_d16ec74917687d0935b86277ca25e60b.setContent(html_c8aeae4d12c63c85cbb5fe56473cf915);
+            
+        
+
+        marker_1440c87c610d5219318969ad4ee007b6.bindPopup(popup_d16ec74917687d0935b86277ca25e60b)
+        ;
+
+        
+    
+    
+            var marker_271c25742d983d12f62b54ee05ecd39e = L.marker(
+                [41.4292442, 2.1388628],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_bb31b0a7d8931a466462d11107dc9553 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_271c25742d983d12f62b54ee05ecd39e.setIcon(icon_bb31b0a7d8931a466462d11107dc9553);
+        
+    
+        var popup_91f3a5f0b9a6a1c7a4c6789d36fe2641 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c95b563af88194e64232eee50551b438 = $(`<div id="html_c95b563af88194e64232eee50551b438" style="width: 100.0%; height: 100.0%;">8- (CEMCAT) Centre d'Esclerosi Múltiple de Catalunya</div>`)[0];
+                popup_91f3a5f0b9a6a1c7a4c6789d36fe2641.setContent(html_c95b563af88194e64232eee50551b438);
+            
+        
+
+        marker_271c25742d983d12f62b54ee05ecd39e.bindPopup(popup_91f3a5f0b9a6a1c7a4c6789d36fe2641)
+        ;
+
+        
+    
+    
+            var marker_c1e5d2d9f09582e73276b03629987a5a = L.marker(
+                [41.4129259, 2.1727758],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_075fbc7d14537d4e6d2854cdecbc082c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_c1e5d2d9f09582e73276b03629987a5a.setIcon(icon_075fbc7d14537d4e6d2854cdecbc082c);
+        
+    
+        var popup_cd352194f1f27198eeb4e88b86030fce = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_70b8a6064faafe944fd8b05cccb94e93 = $(`<div id="html_70b8a6064faafe944fd8b05cccb94e93" style="width: 100.0%; height: 100.0%;">Fundació Puigvert - Iuna</div>`)[0];
+                popup_cd352194f1f27198eeb4e88b86030fce.setContent(html_70b8a6064faafe944fd8b05cccb94e93);
+            
+        
+
+        marker_c1e5d2d9f09582e73276b03629987a5a.bindPopup(popup_cd352194f1f27198eeb4e88b86030fce)
+        ;
+
+        
+    
+    
+            var marker_16277716056d6b7c53dd44caa8fb8413 = L.marker(
+                [41.4004669, 2.1341745],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_dd86c740516e9e7fbeadb654a2632400 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_16277716056d6b7c53dd44caa8fb8413.setIcon(icon_dd86c740516e9e7fbeadb654a2632400);
+        
+    
+        var popup_14bede4e2247ee3b3bb863e6ac102d64 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_593e952719eb41451592ddd58cdb8703 = $(`<div id="html_593e952719eb41451592ddd58cdb8703" style="width: 100.0%; height: 100.0%;">Clínica Sagrada Família</div>`)[0];
+                popup_14bede4e2247ee3b3bb863e6ac102d64.setContent(html_593e952719eb41451592ddd58cdb8703);
+            
+        
+
+        marker_16277716056d6b7c53dd44caa8fb8413.bindPopup(popup_14bede4e2247ee3b3bb863e6ac102d64)
+        ;
+
+        
+    
+    
+            var marker_5353a71c9892701a814fed9526a3b3bd = L.marker(
+                [41.401314, 2.1422817],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_2d7bdbf5ed7fa2d6fd542b5835df317e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5353a71c9892701a814fed9526a3b3bd.setIcon(icon_2d7bdbf5ed7fa2d6fd542b5835df317e);
+        
+    
+        var popup_3f06a8d554b0da8f1aa20ca18880a421 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e883c93d25a906969a32276e8e4e4713 = $(`<div id="html_e883c93d25a906969a32276e8e4e4713" style="width: 100.0%; height: 100.0%;">Hospital Clínic de Barcelona. Seu Plató</div>`)[0];
+                popup_3f06a8d554b0da8f1aa20ca18880a421.setContent(html_e883c93d25a906969a32276e8e4e4713);
+            
+        
+
+        marker_5353a71c9892701a814fed9526a3b3bd.bindPopup(popup_3f06a8d554b0da8f1aa20ca18880a421)
+        ;
+
+        
+    
+    
+            var marker_93a1b0210e563bc16a153e6d419c1105 = L.marker(
+                [41.4127594, 2.2185082],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_7add562b5a53cee261ece4da6faec436 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_93a1b0210e563bc16a153e6d419c1105.setIcon(icon_7add562b5a53cee261ece4da6faec436);
+        
+    
+        var popup_13db4b5ed31c190966fe33b05ed89422 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8a31a3f7a048dc5215b2233687ddaa5d = $(`<div id="html_8a31a3f7a048dc5215b2233687ddaa5d" style="width: 100.0%; height: 100.0%;">Consorci Mar Parc de Salut de Barcelona</div>`)[0];
+                popup_13db4b5ed31c190966fe33b05ed89422.setContent(html_8a31a3f7a048dc5215b2233687ddaa5d);
+            
+        
+
+        marker_93a1b0210e563bc16a153e6d419c1105.bindPopup(popup_13db4b5ed31c190966fe33b05ed89422)
+        ;
+
+        
+    
+    
+            var marker_6f673b1f9516e3cb654b49c4cb331ff1 = L.marker(
+                [41.3730597, 2.1733834],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_e8bacd7ec67c1bf6aa38adb5e6beff2a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_6f673b1f9516e3cb654b49c4cb331ff1.setIcon(icon_e8bacd7ec67c1bf6aa38adb5e6beff2a);
+        
+    
+        var popup_54456818219fa146d5d5382523fbba6c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d550de3775a482fdfca862e32ae22e65 = $(`<div id="html_d550de3775a482fdfca862e32ae22e65" style="width: 100.0%; height: 100.0%;">Fundació sanitaria Sant Pere Claver</div>`)[0];
+                popup_54456818219fa146d5d5382523fbba6c.setContent(html_d550de3775a482fdfca862e32ae22e65);
+            
+        
+
+        marker_6f673b1f9516e3cb654b49c4cb331ff1.bindPopup(popup_54456818219fa146d5d5382523fbba6c)
+        ;
+
+        
+    
+    
+            var marker_9c7408caa1974be45d088cd75bae2ef9 = L.marker(
+                [41.3889427, 2.1456033],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_6a623fc5dd532e14a4cc00c5a26c5e9c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_9c7408caa1974be45d088cd75bae2ef9.setIcon(icon_6a623fc5dd532e14a4cc00c5a26c5e9c);
+        
+    
+        var popup_3e3c6c7defda32a7e775e3182deb22c0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1a8cd10be4dffb3932dc2853e697e2af = $(`<div id="html_1a8cd10be4dffb3932dc2853e697e2af" style="width: 100.0%; height: 100.0%;">Capio Hospital Universitari Sagrat Cor</div>`)[0];
+                popup_3e3c6c7defda32a7e775e3182deb22c0.setContent(html_1a8cd10be4dffb3932dc2853e697e2af);
+            
+        
+
+        marker_9c7408caa1974be45d088cd75bae2ef9.bindPopup(popup_3e3c6c7defda32a7e775e3182deb22c0)
+        ;
+
+        
+    
+    
+            var marker_129ea2bb88a31070656240edaa03efca = L.marker(
+                [41.3848057, 2.1257795],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_bd22f79ac60d477a74a4b2856f15ca5a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_129ea2bb88a31070656240edaa03efca.setIcon(icon_bd22f79ac60d477a74a4b2856f15ca5a);
+        
+    
+        var popup_1f8fe75146b46dc083720c1a60eec564 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9ec3ca711ff27949274000c6b7fcc610 = $(`<div id="html_9ec3ca711ff27949274000c6b7fcc610" style="width: 100.0%; height: 100.0%;">Hospital Universitari Quirón Dexeus</div>`)[0];
+                popup_1f8fe75146b46dc083720c1a60eec564.setContent(html_9ec3ca711ff27949274000c6b7fcc610);
+            
+        
+
+        marker_129ea2bb88a31070656240edaa03efca.bindPopup(popup_1f8fe75146b46dc083720c1a60eec564)
+        ;
+
+        
+    
+    
+            var marker_ee67addf903ce6e6cd89cc67fd1dcc52 = L.marker(
+                [41.3852022, 2.123552],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_edf0c6b4a1f64893c5bca8495d439458 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_ee67addf903ce6e6cd89cc67fd1dcc52.setIcon(icon_edf0c6b4a1f64893c5bca8495d439458);
+        
+    
+        var popup_2adc2758bac00f2c1a1328ee3efc3c30 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2b05e16206501779ce50f490197d1239 = $(`<div id="html_2b05e16206501779ce50f490197d1239" style="width: 100.0%; height: 100.0%;">Hospital Casa Maternitat</div>`)[0];
+                popup_2adc2758bac00f2c1a1328ee3efc3c30.setContent(html_2b05e16206501779ce50f490197d1239);
+            
+        
+
+        marker_ee67addf903ce6e6cd89cc67fd1dcc52.bindPopup(popup_2adc2758bac00f2c1a1328ee3efc3c30)
+        ;
+
+        
+    
+    
+            var marker_34e8ed276f0cb9840d75f621517cba42 = L.marker(
+                [41.3898885, 2.1297441],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_aefecf8efd82cb53aeb6f4879abc4b51 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_34e8ed276f0cb9840d75f621517cba42.setIcon(icon_aefecf8efd82cb53aeb6f4879abc4b51);
+        
+    
+        var popup_8e4dad88cbabecf95769694bde6270ae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3b927e628abdd169ccaced0aa2c06cef = $(`<div id="html_3b927e628abdd169ccaced0aa2c06cef" style="width: 100.0%; height: 100.0%;">Hospital de Barcelona</div>`)[0];
+                popup_8e4dad88cbabecf95769694bde6270ae.setContent(html_3b927e628abdd169ccaced0aa2c06cef);
+            
+        
+
+        marker_34e8ed276f0cb9840d75f621517cba42.bindPopup(popup_8e4dad88cbabecf95769694bde6270ae)
+        ;
+
+        
+    
+    
+            var marker_17c76fea152279f5f5de3a1c7ab6bf91 = L.marker(
+                [41.4015346, 2.1503727],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_c63d078145280ff813f19a71144b040a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_17c76fea152279f5f5de3a1c7ab6bf91.setIcon(icon_c63d078145280ff813f19a71144b040a);
+        
+    
+        var popup_f3a9bcb8b4d05e4fe4aaba06a78165c3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_36e3fdca721ef9dd7a2397402d606d34 = $(`<div id="html_36e3fdca721ef9dd7a2397402d606d34" style="width: 100.0%; height: 100.0%;">Fremap</div>`)[0];
+                popup_f3a9bcb8b4d05e4fe4aaba06a78165c3.setContent(html_36e3fdca721ef9dd7a2397402d606d34);
+            
+        
+
+        marker_17c76fea152279f5f5de3a1c7ab6bf91.bindPopup(popup_f3a9bcb8b4d05e4fe4aaba06a78165c3)
+        ;
+
+        
+    
+    
+            var marker_1bc1444d2fea89df07ec27ff00008c2e = L.marker(
+                [41.3838677, 2.1938899],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_623a45820366cb07c8c83da856236475 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_1bc1444d2fea89df07ec27ff00008c2e.setIcon(icon_623a45820366cb07c8c83da856236475);
+        
+    
+        var popup_1efe2aacdeb4e1bc53c119f3207402d8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dd81c637969b6484785f41fd1a174d01 = $(`<div id="html_dd81c637969b6484785f41fd1a174d01" style="width: 100.0%; height: 100.0%;">Hospital del Mar</div>`)[0];
+                popup_1efe2aacdeb4e1bc53c119f3207402d8.setContent(html_dd81c637969b6484785f41fd1a174d01);
+            
+        
+
+        marker_1bc1444d2fea89df07ec27ff00008c2e.bindPopup(popup_1efe2aacdeb4e1bc53c119f3207402d8)
+        ;
+
+        
+    
+    
+            var marker_5d11fb08ed179813545213df1e55911f = L.marker(
+                [41.4280237, 2.1408552],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_56db27903439c1c36712241d91adbe9d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5d11fb08ed179813545213df1e55911f.setIcon(icon_56db27903439c1c36712241d91adbe9d);
+        
+    
+        var popup_b8f3cb3f025fb4a00b0c6908f457953b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b3cf3b814d24fea321257b49d38c585f = $(`<div id="html_b3cf3b814d24fea321257b49d38c585f" style="width: 100.0%; height: 100.0%;">Hospital Universitari Vall d'Hebron</div>`)[0];
+                popup_b8f3cb3f025fb4a00b0c6908f457953b.setContent(html_b3cf3b814d24fea321257b49d38c585f);
+            
+        
+
+        marker_5d11fb08ed179813545213df1e55911f.bindPopup(popup_b8f3cb3f025fb4a00b0c6908f457953b)
+        ;
+
+        
+    
+    
+            var marker_ec5e1e1e1e742ea73ca15eca4a9fac1c = L.marker(
+                [41.4158262, 2.1387446],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_532b6472d2063c101686a4e760cf8bae = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_ec5e1e1e1e742ea73ca15eca4a9fac1c.setIcon(icon_532b6472d2063c101686a4e760cf8bae);
+        
+    
+        var popup_ebf636cc93b7d21e1df8f3bfc255d2e6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d2c3bebf777b29b030b3afa913c8ca97 = $(`<div id="html_d2c3bebf777b29b030b3afa913c8ca97" style="width: 100.0%; height: 100.0%;">Hospital Quironsalud</div>`)[0];
+                popup_ebf636cc93b7d21e1df8f3bfc255d2e6.setContent(html_d2c3bebf777b29b030b3afa913c8ca97);
+            
+        
+
+        marker_ec5e1e1e1e742ea73ca15eca4a9fac1c.bindPopup(popup_ebf636cc93b7d21e1df8f3bfc255d2e6)
+        ;
+
+        
+    
+    
+            var marker_7edf9010bff5eef99eb273838f49b26c = L.marker(
+                [41.3895177, 2.1522834],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_3574c01ef7f33483eaa9ab72edc831d6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7edf9010bff5eef99eb273838f49b26c.setIcon(icon_3574c01ef7f33483eaa9ab72edc831d6);
+        
+    
+        var popup_8c9092e31157d16491088dfd9657f481 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fb5a8f797a82cda5ed33935af7d06aa2 = $(`<div id="html_fb5a8f797a82cda5ed33935af7d06aa2" style="width: 100.0%; height: 100.0%;">Hospital Clínic</div>`)[0];
+                popup_8c9092e31157d16491088dfd9657f481.setContent(html_fb5a8f797a82cda5ed33935af7d06aa2);
+            
+        
+
+        marker_7edf9010bff5eef99eb273838f49b26c.bindPopup(popup_8c9092e31157d16491088dfd9657f481)
+        ;
+
+        
+    
+    
+            var marker_369b013f6953488810b0944a3ec2854d = L.marker(
+                [41.4137694, 2.1421547],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_dfb045688ef19946f52cc819baf370d7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_369b013f6953488810b0944a3ec2854d.setIcon(icon_dfb045688ef19946f52cc819baf370d7);
+        
+    
+        var popup_72b3fb210eb06e463d9e7ae1d7a88593 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0810d010c4ebfab2269a0265716e09f3 = $(`<div id="html_0810d010c4ebfab2269a0265716e09f3" style="width: 100.0%; height: 100.0%;">HM Nou Delfos</div>`)[0];
+                popup_72b3fb210eb06e463d9e7ae1d7a88593.setContent(html_0810d010c4ebfab2269a0265716e09f3);
+            
+        
+
+        marker_369b013f6953488810b0944a3ec2854d.bindPopup(popup_72b3fb210eb06e463d9e7ae1d7a88593)
+        ;
+
+        
+    
+    
+            var marker_71c7ac691b778527397971113eb21f55 = L.marker(
+                [41.413977, 2.1742203],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_2abe0ce73490f8705bea114b5a05f9c9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_71c7ac691b778527397971113eb21f55.setIcon(icon_2abe0ce73490f8705bea114b5a05f9c9);
+        
+    
+        var popup_576629c7de45a11a44877f83c374fdb5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7ba9e3d70c7cd3af89ebaa775d20db06 = $(`<div id="html_7ba9e3d70c7cd3af89ebaa775d20db06" style="width: 100.0%; height: 100.0%;">Hospital de la Santa Creu i Sant Pau</div>`)[0];
+                popup_576629c7de45a11a44877f83c374fdb5.setContent(html_7ba9e3d70c7cd3af89ebaa775d20db06);
+            
+        
+
+        marker_71c7ac691b778527397971113eb21f55.bindPopup(popup_576629c7de45a11a44877f83c374fdb5)
+        ;
+
+        
+    
+    
+            var marker_80a4e0fc9c25082fb30691ea58b17040 = L.marker(
+                [41.4150006, 2.1413296],
+                {
+}
+            ).addTo(map_c18361754e18ee5a17c0af9591db81d9);
+        
+    
+            var icon_03889cecba1c79bea7b6934bbf01cfa5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_80a4e0fc9c25082fb30691ea58b17040.setIcon(icon_03889cecba1c79bea7b6934bbf01cfa5);
+        
+    
+        var popup_40fa9ec505c9bda11298fbb09bdcf1be = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d30d41fec4b71612636b520d73e50962 = $(`<div id="html_d30d41fec4b71612636b520d73e50962" style="width: 100.0%; height: 100.0%;">Unitat Cures Paliatives - Unitat d'Atenció Intermèdia Oncològica</div>`)[0];
+                popup_40fa9ec505c9bda11298fbb09bdcf1be.setContent(html_d30d41fec4b71612636b520d73e50962);
+            
+        
+
+        marker_80a4e0fc9c25082fb30691ea58b17040.bindPopup(popup_40fa9ec505c9bda11298fbb09bdcf1be)
+        ;
+
+        
+    
+</script>
+</html>
