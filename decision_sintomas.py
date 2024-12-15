@@ -22,7 +22,7 @@ Teniendo en cuenta lo anterior, analiza cada caso y elige la decisión más adec
 - Situación urgente: Es necesario acudir a urgencias, pero no hace falta hacerlo con demasiada prisa. Puede haber riesgo si no se actúa a tiempo.
 - Situación muy urgente: Es necesario acudir a urgencias lo antes posible, ya que la vida del paciente podría estar en peligro."""
 
-api_key = "aF-Dco7h7mtMM8UuayArHrWHJkxQAUF2ptFHuLBpzpiGfRgPemK"
+api_key = "Pq-4b2x89gmqDvOPP3tuAPLMVqYvKkXmYkPmLm2NMcyjaMhGp8H"
 api_base_url = "https://api.straico.com/v0"
 
 def generar_prompt_sintomas(sintomas, historial_clinico):

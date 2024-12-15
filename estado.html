@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Com em trobo [MondongoTV]</title>
+    <link rel="stylesheet" href="/static/css/style_main.css">
+    <style>
+        .symptom-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-button:hover {
+            background-color: #2980b9;
+        }
+
+        .motivation-box {
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .symptoms-history {
+            margin-top: 30px;
+        }
+
+        .date-select {
+            margin-bottom: 20px;
+        }
+
+        /* Estilos del menú desplegable */
+        nav {
+            width: 250px;
+            background-color: #f4f4f4;
+            border-right: 1px solid #ddd;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+            transition: left 0.3s ease-in-out;
+        }
+        nav.closed {
+            left: -250px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        nav ul li:hover {
+            background-color: #eaeaea;
+        }
+
+        .toggle-menu {
+            position: absolute;
+            top: 20px;
+            left: 100%;
+            width: 30px;
+            height: 30px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+        
+        .fever-slider {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .fever-slider input[type="range"] {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(to right, #2ecc71, #f1c40f, #e74c3c);
+        }
+
+        .fever-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #3498db;
+            cursor: pointer;
+        }
+
+        .fever-value {
+            min-width: 60px;
+            text-align: center;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        /* New styles for pain slider */
+        .pain-slider {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .pain-slider input[type="range"] {
+            flex: 1;
+            -webkit-appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(to right, #2ecc71, #f1c40f, #e74c3c);
+        }
+
+        .pain-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #3498db;
+            cursor: pointer;
+        }
+
+        .pain-value {
+            min-width: 60px;
+            text-align: center;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.5em;
+        }
+
+        .medical-evaluation-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .decision-content {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .evaluation-status {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .evaluation-recommendation {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .progress-message {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .submit-button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        .evaluation-section {
+            margin-bottom: 15px;
+        }
+        
+        .evaluation-section h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+        
+        .evaluation-list {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .decision-content {
+            white-space: pre-line;
+        }
+        
+        .evaluation-status p {
+            margin-bottom: 10px;
+        }
+
+        .urgent-action {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        /* Nivel: Leve */
+        .urgent-action.leve {
+            background-color: #f0fff0;
+            border-left: 4px solid #27ae60;
+        }
+        .urgent-action.leve h4 {
+            color: #27ae60;
+        }
+        .urgent-action.leve .urgent-message {
+            color: #2ecc71;
+        }
+
+        /* Nivel: Moderada */
+        .urgent-action.moderada {
+            background-color: #fff9e6;
+            border-left: 4px solid #f39c12;
+        }
+        .urgent-action.moderada h4 {
+            color: #d35400;
+        }
+        .urgent-action.moderada .urgent-message {
+            color: #e67e22;
+        }
+
+        /* Nivel: Urgente */
+        .urgent-action.urgente {
+            background-color: #ffe6e6;
+            border-left: 4px solid #c0392b;
+        }
+        .urgent-action.urgente h4 {
+            color: #c0392b;
+        }
+        .urgent-action.urgente .urgent-message {
+            color: #e74c3c;
+        }
+
+        /* Nivel: Muy Urgente */
+        .urgent-action.muy-urgente {
+            background-color: #ff0000;
+            border-left: 4px solid #7f0000;
+            animation: pulse 2s infinite;
+        }
+        .urgent-action.muy-urgente h4,
+        .urgent-action.muy-urgente .urgent-message {
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <div class="toggle-menu" onclick="toggleMenu()">&#8594;</div>
+        <ul>
+            <li onclick="window.location.href='/main'">Perfil</li>
+            <li onclick="window.location.href='/estado'">Com em trobo</li>
+            <li onclick="window.location.href='/urgencias'">Guia urgències</li>
+            <li onclick="window.location.href='/historial'">Historial de proves</li>
+            <li onclick="window.location.href='/centros'">Centres mèdics propers</li>
+            <li onclick="window.location.href='/noticias'">Novetats</li>
+            <li onclick="confirmLogout()" style="color: #e74c3c;">Tanca la sessió</li>
+            <li class="qr-button" onclick="window.location.href='/dashboard'">Veure el codi QR</li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="container">
+            <h1>Com em trobo avui?</h1>
+            
+            <div class="motivation-box">
+                <h3>🌟 El teu benestar és important!</h3>
+                <p>Registrar els teus símptomes diàriament ens ajuda a detectar possibles problemes de salut de manera prematura. 
+                   Això permet una intervenció més ràpida i eficaç. La teva participació activa en el seguiment de la teva salut 
+                   és fonamental per a una millor atenció mèdica.</p>
+            </div>
+
+            <div class="symptom-form">
+                <form id="symptomForm">
+                    <div class="form-group">
+                        <label for="date">Data:</label>
+                        <input type="date" id="date" name="date" required readonly style="background-color: #f4f4f4; cursor: not-allowed;">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="generalState">Estat general:</label>
+                        <select id="generalState" name="generalState" required>
+                            <option value="">Selecciona una opció</option>
+                            <option value="molt-be">Molt bé</option>
+                            <option value="be">Bé</option>
+                            <option value="regular">Regular</option>
+                            <option value="malament">Malament</option>
+                            <option value="molt-malament">Molt malament</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="symptoms">Símptomes específics:</label>
+                        <textarea id="symptoms" name="symptoms" placeholder="Descriu els teus símptomes..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fever">Temperatura (°C):</label>
+                        <div class="fever-slider">
+                            <input type="range" id="fever" name="fever" min="35" max="42" step="0.1" value="36.5">
+                            <span class="fever-value">36.5°C</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pain">Nivell de dolor (0-10):</label>
+                        <div class="pain-slider">
+                            <input type="range" id="pain" name="pain" min="0" max="10" value="0">
+                            <span class="pain-value">😊</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Notes addicionals:</label>
+                        <textarea id="notes" name="notes" placeholder="Qualsevol altra observació..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Guardar Registre</button>
+                </form>
+            </div>
+
+            <div class="loading-spinner" style="display: none;">
+                <div class="spinner"></div>
+                <p class="progress-message">Processant els símptomes...</p>
+            </div>
+
+            <div class="symptoms-history">
+                <h2>Historial de Símptomes</h2>
+                <div class="date-select">
+                    <label for="historyDate">Veure registre del dia:</label>
+                    <input type="date" id="historyDate" onchange="loadSymptoms(this.value)">
+                </div>
+                <div id="symptomsRecord" class="info-box">
+                    Selecciona una data per veure el registre
+                </div>
+            </div>
+
+            <div class="decision-results" style="display: none; margin-top: 20px;">
+                <h2>Avaluació Mèdica</h2>
+                <div class="medical-evaluation-box">
+                    <div id="decisionResult" class="decision-content">
+                        <!-- Results will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Agrega la función toggleMenu al inicio del script
+        function toggleMenu() {
+            var nav = document.getElementById('nav');
+            nav.classList.toggle('closed');
+            var toggleIcon = nav.classList.contains('closed') ? '&#8594;' : '&#8592;';
+            document.querySelector('.toggle-menu').innerHTML = toggleIcon;
+        }
+
+        function determinarNivelUrgencia(textoCompleto) {
+            // Buscar el nivel después de "DECISIÓN: "
+            const match = textoCompleto.match(/DECISIÓN:\s*(.*?)(?:\n|$)/);
+            if (!match) return 'leve';
+            
+            const decision = match[1].toLowerCase();
+            
+            // Determinar nivel basado en la decisión explícita
+            if (decision.includes('muy urgente')) {
+                return 'muy-urgente';
+            } else if (decision.includes('urgente')) {
+                return 'urgente';
+            } else if (decision.includes('moderada')) {
+                return 'moderada';
+            }
+            return 'leve';
+        }
+
+        document.getElementById('symptomForm').onsubmit = async function(e) {
+            e.preventDefault();
+            
+            const submitButton = this.querySelector('button[type="submit"]');
+            const loadingSpinner = document.querySelector('.loading-spinner');
+            const progressMessage = loadingSpinner.querySelector('.progress-message');
+            const decisionDiv = document.querySelector('.decision-results');
+            const decisionContent = document.getElementById('decisionResult');
+            
+            try {
+                submitButton.disabled = true;
+                loadingSpinner.style.display = 'block';
+                decisionDiv.style.display = 'none';
+                
+                const datos = {
+                    estado_general: document.getElementById('generalState').value,
+                    sintomas_especificos: document.getElementById('symptoms').value,
+                    temperatura: document.getElementById('fever').value,
+                    nivel_dolor: document.getElementById('pain').value,
+                    notas: document.getElementById('notes').value
+                };
+
+                progressMessage.textContent = 'Enviant informació...';
+                
+                const response = await fetch('/api/guardar_sintomas', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(datos)
+                });
+
+                const data = await response.json();
+                console.log('Respuesta del servidor:', data);
+                
+                if(data.status === "success" && data.decision) {
+                    progressMessage.textContent = 'Processant l\'avaluació...';
+                    decisionDiv.style.display = 'block';
+
+                    // La evaluación puede venir como string o como objeto
+                    let evaluacionTexto;
+                    if (typeof data.decision.evaluacion === 'string') {
+                        evaluacionTexto = data.decision.evaluacion;
+                    } else if (data.decision.evaluacion && data.decision.evaluacion.estado) {
+                        evaluacionTexto = `${data.decision.evaluacion.estado}\n${data.decision.evaluacion.recomendaciones || ''}`;
+                    }
+
+                    if (evaluacionTexto) {
+                        // Procesamos el texto para formatear correctamente
+                        const secciones = evaluacionTexto.split('\n\n');
+                        const htmlFormateado = secciones.map(seccion => {
+                            if (seccion.includes('ACCIÓN PARA EL PACIENTE:')) {
+                                // Obtener el nivel de urgencia del texto completo de evaluación
+                                const nivelUrgencia = determinarNivelUrgencia(evaluacionTexto);
+                                
+                                // Emoji según nivel de urgencia
+                                const emojis = {
+                                    'leve': '✅',
+                                    'moderada': '⚠️',
+                                    'urgente': '🚨',
+                                    'muy-urgente': '🏥'
+                                };
+
+                                return `
+                                    <div class="evaluation-section urgent-action ${nivelUrgencia}">
+                                        <h4>${emojis[nivelUrgencia]} ACCIÓN REQUERIDA:</h4>
+                                        <p class="urgent-message">${seccion.split(':')[1].trim()}</p>
+                                    </div>
+                                `;
+                            }
+                            // Detectar si es un título con dos puntos
+                            else if (seccion.includes(':')) {
+                                const [titulo, contenido] = seccion.split(':');
+                                return `<div class="evaluation-section">
+                                    <h4>${titulo.trim()}:</h4>
+                                    <p>${contenido.trim()}</p>
+                                </div>`;
+                            }
+                            // Para listas numeradas
+                            else if (seccion.match(/^\d\./)) {
+                                return `<div class="evaluation-list">${seccion}</div>`;
+                            }
+                            return `<p>${seccion}</p>`;
+                        }).join('');
+
+                        decisionContent.innerHTML = `
+                            <div class="evaluation-status">
+                                <h3>Avaluació mèdica:</h3>
+                                ${htmlFormateado}
+                            </div>
+                            <div class="symptom-summary">
+                                <strong>Símptomes analitzats:</strong><br>
+                                <p>${data.sintomas_procesados.join(', ')}</p>
+                            </div>
+                        `;
+                    } else {
+                        decisionContent.innerHTML = `
+                            <div class="evaluation-status warning">
+                                <h3>No s'ha pogut generar una avaluació detallada</h3>
+                                <p>Si us plau, consulti amb el seu metge si els símptomes persisteixen.</p>
+                            </div>
+                        `;
+                    }
+                    
+                    decisionDiv.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    throw new Error('Error en processar l\'avaluació mèdica');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                decisionDiv.style.display = 'block';
+                decisionContent.innerHTML = `
+                    <div class="evaluation-status error">
+                        <h3>Error:</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            } finally {
+                setTimeout(() => {
+                    submitButton.disabled = false;
+                    loadingSpinner.style.display = 'none';
+                }, 1000);
+            }
+        };
+
+        function loadSymptoms(fecha) {
+            if (!fecha) return;
+            
+            fetch(`/api/historial_sintomas/${fecha}`)
+            .then(response => response.json())
+            .then(data => {
+                const symptomsRecord = document.getElementById('symptomsRecord');
+                if (data.status === "success") {
+                    symptomsRecord.innerHTML = `
+                        <div class="symptom-record">
+                            <h3>Registre del dia ${data.data.fecha_registro}</h3>
+                            <p><strong>Estat general:</strong> ${data.data.estado_general}</p>
+                            <p><strong>Temperatura:</strong> ${data.data.temperatura}°C</p>
+                            <p><strong>Nivell de dolor:</strong> ${data.data.nivel_dolor}/10</p>
+                            <p><strong>Símptomes específics:</strong></p>
+                            <div class="symptom-details">${data.data.sintomas_especificos}</div>
+                            <p><strong>Notes:</strong></p>
+                            <div class="symptom-notes">${data.data.notas}</div>
+                        </div>
+                    `;
+                } else {
+                    symptomsRecord.innerHTML = `<p>No hi ha registres per aquesta data</p>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('symptomsRecord').innerHTML = 
+                    '<p>Error al carregar els símptomes</p>';
+            });
+        }
+
+        // Añadir estilos para el historial
+        const style = document.createElement('style');
+        style.textContent = `
+            .symptom-record {
+                padding: 15px;
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .symptom-record h3 {
+                color: #2c3e50;
+                margin-bottom: 15px;
+            }
+            .symptom-details, .symptom-notes {
+                background: #f8f9fa;
+                padding: 10px;
+                border-radius: 4px;
+                margin: 5px 0 15px 0;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add or update these styles
+        const additionalStyles = `
+            .urgent-action.muy-urgente {
+                background-color: #ff0000;
+                border-left: 4px solid #7f0000;
+                animation: pulse 2s infinite;
+            }
+            .urgent-action.muy-urgente h4,
+            .urgent-action.muy-urgente .urgent-message {
+                color: white;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            }
+        `;
+
+        // Add the styles to the existing style element
+        style.textContent += additionalStyles;
+
+        // Establecer la fecha actual y desactivar la edición
+        const today = new Date();
+        const dateInput = document.getElementById('date');
+        dateInput.valueAsDate = today;
+        dateInput.setAttribute('readonly', true);
+        dateInput.addEventListener('click', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        
+        // Actualizar el valor de la temperatura
+        const feverSlider = document.getElementById('fever');
+        const feverValue = feverSlider.nextElementSibling;
+        
+        feverSlider.addEventListener('input', function() {
+            feverValue.textContent = this.value + '°C';
+            
+            // Cambiar el color del texto según la temperatura
+            if (this.value >= 38) {
+                feverValue.style.color = '#e74c3c';
+            } else if (this.value >= 37) {
+                feverValue.style.color = '#f1c40f';
+            } else {
+                feverValue.style.color = '#2c3e50';
+            }
+        });
+
+        // Update the value of the pain slider with emojis
+        const painSlider = document.getElementById('pain');
+        const painValue = painSlider.nextElementSibling;
+        
+        const painEmojis = ['😊', '🙂', '😐', '🙁', '😟', '😣', '😖', '😫', '😩', '🤒', '😭'];
+        
+        painSlider.addEventListener('input', function() {
+            painValue.textContent = painEmojis[this.value];
+        });
+
+        function confirmLogout() {
+            if (confirm("Estàs segur que vols tancar la sessió?")) {
+                window.location.href = '/logout';
+            }
+        }
+    </script>
+</body>
+</html>

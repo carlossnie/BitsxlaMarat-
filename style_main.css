@@ -1,0 +1,309 @@
+/* Reseteo básico de márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo animado para la página */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: linear-gradient(135deg, #2C3E50, #4CA1AF, #74b9ff);
+    background-size: 300% 300%;
+    animation: backgroundAnimation 12s ease infinite;
+    color: #000000; /* Cambiar color del texto a negro */
+    overflow-x: hidden; /* Previene scroll horizontal */
+}
+
+html {
+    overflow-x: hidden; /* Previene scroll horizontal en toda la página */
+    overflow-y: auto; /* Permite scroll vertical solo cuando es necesario */
+}
+
+/* Animación del fondo */
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Estilos del encabezado */
+h1 {
+    font-size: 40px;
+    color: #000000; /* Color del título en negro */
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    color: #000000; /* Subtítulo también en negro */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Estilo para los párrafos */
+p {
+    font-size: 18px;
+    color: #000000; /* Color de los párrafos en negro */
+    text-align: center;
+    max-width: 900px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el contenedor principal */
+.container {
+    width: calc(100% - 50px); /* Restamos el ancho del menú */
+    max-width: calc(100vw - 370px); /* Asegura que no exceda el ancho de la ventana */
+    margin: 20px 20px 20px 120px; /* Aumentado de 100px a 120px */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden; /* Previene scroll horizontal en el contenedor */
+}
+
+.content {
+    margin-left: 90px; /* Aumentado de 70px a 90px */
+    padding: 20px;
+    width: calc(100% - 110px); /* Ajustado el ancho para compensar los márgenes */
+    box-sizing: border-box;
+    max-height: 100vh; /* Limita la altura al viewport */
+    overflow-y: auto; /* Permite scroll vertical solo en el contenido */
+    overflow-x: hidden; /* Previene scroll horizontal en el contenido */
+}
+/* Contenedor de las tres columnas */
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Columnas */
+.info-column {
+    flex: 1;
+    min-width: 250px;
+    max-width: calc(33.33% - 20px);
+    margin-bottom: 20px;
+}
+
+.info-column h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los párrafos dentro de info-column */
+.info-column p {
+    margin-bottom: 5px; /* Reduce el espacio entre el título y el info-box */
+    margin-top: 25px; /* Aumenta el espacio entre secciones */
+}
+
+/* Ajuste para el primer párrafo de cada columna */
+.info-column p:first-of-type {
+    margin-top: 15px; /* Menos espacio para el primer elemento */
+}
+
+/* Caja de información */
+.info-box {
+    margin-top: 0; /* Elimina el margen superior */
+    padding: 15px;
+    border: 1px solid #bdc3c7;
+    background-color: #f4f6f7;
+    border-radius: 8px;
+    color: #000000; /* Color del texto dentro de las cajas en negro */
+    font-weight: 500;
+}
+
+/* Estilo para campos pequeños como Edad y Grupo Sanguíneo */
+#edat, #grupSanguini {
+    width: 60px;
+    height: 45px; /* Ajustada de 50px a 45px */
+    line-height: 45px; /* Ajustada para mantener el texto centrado */
+    min-height: 45px; /* Ajustada para consistencia */
+}
+
+/* Estilo para campos editables */
+.info-box.editable {
+    background-color: #ffffff;
+    border: 1px solid #3498db;
+}
+
+.edit-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    background-image: url('icono_editar.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity 0.3s;
+}
+
+.edit-button:hover {
+    opacity: 0.8;
+    background-color: transparent;
+}
+
+/* Estilo para el botón principal de editar */
+.edit-main-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.edit-main-button:hover {
+    background-color: #2980b9;
+}
+
+.section-divider {
+    height: 2px;
+    background-color: #e0e0e0;
+    margin: 10px 0;
+}
+
+/* Estilo para el menú */
+nav {
+    width: 350px;
+    background-color: #34495E;
+    border-right: 1px solid #2C3E50;
+    height: 100vh;
+    position: fixed;
+    left: -350px;
+    transition: left 0.3s ease-in-out;
+    padding-top: 20px;
+    box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+nav:hover {
+    left: 0;
+}
+
+/* Estilo de la lista de navegación */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    padding: 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #2C3E50;
+    text-align: left;
+    font-size: 18px;
+    color: #000000; /* Color de las letras del menú en negro */
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+/* Hover en los ítems del menú */
+nav ul li:hover {
+    background-color: #2C3E50;
+    color: #000000;
+}
+
+/* Estilo de la pestaña para desplegar el menú */
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+    body {
+        background: linear-gradient(135deg, #2C3E50, #4CA1AF);
+    }
+
+    .info-container {
+        flex-direction: column;
+    }
+
+    .info-column {
+        width: 100%;
+    }
+
+    nav {
+        width: 80%;
+        left: -80%;
+    }
+
+    nav:hover {
+        left: 0;
+    }
+
+    nav ul li {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .container {
+        width: 90%; /* Ajustado para móviles */
+        margin: 20px auto; /* Centrado en móviles */
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .content {
+        margin-left: 10px; /* Margen más pequeño en móviles */
+        width: calc(100% - 20px);
+        padding: 10px;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .info-column {
+        max-width: 100%;
+    }
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 40px);
+}
+
+nav ul li.qr-button {
+    margin-top: auto;
+    padding: 20px;
+    background-color: #3498db;
+    color: white !important;
+    text-align: center;
+    font-size: 1.2em;
+    border-top: 1px solid #ddd;
+}
+
+nav ul li.qr-button:hover {
+    background-color: #2980b9;
+}

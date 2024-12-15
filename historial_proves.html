@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Proves [MondongoTV]</title>
+    <link rel="stylesheet" href="/static/css/style_main.css">
+    <style>
+        /* Estilos específicos para el historial de pruebas */
+        .history-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .filter-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .filter-group select, .filter-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .test-entry {
+            border-left: 3px solid #3498db;
+            margin: 20px 0;
+            padding: 15px;
+            position: relative;
+            background: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+
+        .test-entry::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 20px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #3498db;
+        }
+
+        .test-date {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .test-type {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .test-details {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .test-result {
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+
+        .download-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .download-button:hover {
+            background-color: #2980b9;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        /* Estilos del menú desplegable */
+        nav {
+            width: 250px;
+            background-color: #f4f4f4;
+            border-right: 1px solid #ddd;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+            transition: left 0.3s ease-in-out;
+        }
+
+        nav.closed {
+            left: -250px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        nav ul li:hover {
+            background-color: #eaeaea;
+        }
+
+        .toggle-menu {
+            position: absolute;
+            top: 20px;
+            left: 100%;
+            width: 30px;
+            height: 30px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                width: 80%;
+                left: -80%;
+            }
+            .container {
+                width: 90%;
+                margin: 20px auto;
+            }
+            .content {
+                margin-left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú de navegación -->
+    <nav id="nav">
+        <div class="toggle-menu" onclick="toggleMenu()">&#8594;</div>
+        <ul>
+            <li onclick="window.location.href='/main'">Perfil</li>
+            <li onclick="window.location.href='/estado'">Com em trobo</li>
+            <li onclick="window.location.href='/urgencias'">Guia urgències</li>
+            <li onclick="window.location.href='/historial'">Historial de proves</li>
+            <li onclick="window.location.href='/centros'">Centres mèdics propers</li>
+            <li onclick="window.location.href='/noticias'">Novetats</li>
+            <li onclick="confirmLogout()" style="color: #e74c3c;">Tanca la sessió</li>
+            <li class="qr-button" onclick="window.location.href='/dashboard'">Veure el codi QR</li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="container">
+            <h1>Historial de Proves Mèdiques</h1>
+            
+            <!-- Sección de filtros -->
+            <div class="filter-section">
+                <div class="filter-group">
+                    <label for="dateRange">Període:</label>
+                    <select id="dateRange">
+                        <option value="1">Últim mes</option>
+                        <option value="3">Últims 3 mesos</option>
+                        <option value="6">Últims 6 mesos</option>
+                        <option value="12">Últim any</option>
+                        <option value="all">Tot l'historial</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="testType">Tipus de prova:</label>
+                    <select id="testType">
+                        <option value="all">Totes les proves</option>
+                        <option value="blood">Analítiques</option>
+                        <option value="xray">Radiografies</option>
+                        <option value="scan">Escàners</option>
+                        <option value="other">Altres proves</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Timeline de pruebas -->
+            <div class="timeline" id="testTimeline">
+                <!-- Las pruebas se añadirán dinámicamente aquí -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var nav = document.getElementById('nav');
+            nav.classList.toggle('closed');
+            var toggleIcon = nav.classList.contains('closed') ? '&#8594;' : '&#8592;';
+            document.querySelector('.toggle-menu').innerHTML = toggleIcon;
+        }
+
+        // Función para cargar las pruebas según los filtros
+        function loadTests() {
+            const timeline = document.getElementById('testTimeline');
+            const dateRange = document.getElementById('dateRange').value;
+            const testType = document.getElementById('testType').value;
+            
+            // Aquí iría la lógica para cargar las pruebas desde el servidor
+            // Por ahora, mostraremos un mensaje de "sin resultados"
+            timeline.innerHTML = '<div class="no-results">No hi ha proves disponibles per als filtres seleccionats.</div>';
+        }
+
+        // Añadir event listeners para los filtros
+        document.getElementById('dateRange').addEventListener('change', loadTests);
+        document.getElementById('testType').addEventListener('change', loadTests);
+
+        // Cargar pruebas iniciales
+        loadTests();
+
+        function confirmLogout() {
+            if (confirm("Estàs segur que vols tancar la sessió?")) {
+                window.location.href = '/logout';
+            }
+        }
+    </script>
+</body>
+</html>
