@@ -3,7 +3,7 @@ import json
 import logging
 from get_data import db_retriever
 # API configuration
-api_key = "aF-Dco7h7mtMM8UuayArHrWHJkxQAUF2ptFHuLBpzpiGfRgPemK"
+api_key = "Pq-4b2x89gmqDvOPP3tuAPLMVqYvKkXmYkPmLm2NMcyjaMhGp8H"
 api_base_url = "https://api.straico.com/v0"
 
 db_retrieve = db_retriever()
