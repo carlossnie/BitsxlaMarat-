@@ -1,0 +1,178 @@
+{
+    "causas_agudizacion": {
+      "infecciones": {
+        "virus": ["CMV (Citomegalovirus)"],
+        "hongos": ["Pneumocystis jirovecii (Pn. j)"],
+        "bacterias": ["Micobacteris (tuberculosi, atípics)"]
+      },
+      "condiciones_medicas": [
+        "Insuficiència cardíaca esquerra",
+        "Tromboembolisme pulmonar (incloent embòlia grassa)"
+      ],
+      "farmacos_procedimientos": {
+        "farmacos": ["Transfusió de sang", "Inhalació aguda de tòxics pulmonars"],
+        "procedimientos_invasivos_recientes": ["Endoscòpia", "Radioteràpia", "Intervencions quirúrgiques en les setmanes prèvies"]
+      },
+      "otras_causas_medicas": [
+        "Reflux gastroesofàgic (RGE)",
+        "Causes d'abdomen agut (pancreatitis, apendicitis, peritonitis, etc.)",
+        "Pneumotòrax",
+        "Contusió pulmonar"
+      ],
+      "condiciones_pulmonares_especificas": {
+        "exacerbacion_aguda": {
+          "descripcion": "Exacerbació aguda (ExA) de la malaltia pulmonar intersticial de base",
+          "ejemplo": "Fibrosi Pulmonar Idiopàtica (FPI)",
+          "cambios_histologicos": ["Dany Alveolar Difús"]
+        }
+      }
+    },
+    "abreviaciones": {
+      "CMV": "Citomegalovirus",
+      "Pn. j": "Pneumocystis jirovecii",
+      "FPI": "Fibrosi Pulmonar Idiopàtica"
+    },
+    "sintomas": [
+      {
+        "descripcion": "Increment o aparició d’ofec i/o tos en els darrers dies (màxim darreres 2 setmanes)",
+        "sintomas_asociados": [
+          "Increment de la mucositat i congestió nasal",
+          "Increment de la mucositat i dolor de gola",
+          "Increment de la mucositat i febre",
+          "Dolor toràcic",
+          "Xiulets"
+        ]
+      },
+      {
+        "descripcion": "Increment de la mucositat i mal estat general",
+        "sintomas_asociados": ["Congestió nasal", "Dolor de gola"]
+      },
+      {
+        "descripcion": "Dolor toràcic i increment d’ofec sense tos ni altres símptomes",
+        "sintomas_asociados": []
+      }
+    ],
+    "signos_alarma": [
+      "Febre",
+      "Desaturació",
+      "Increment de respiracions per minut o respiracions per minut > 19",
+      "Tiratge muscular per respirar",
+      "Ofec en repòs",
+      "Auscultació de xiulets (sibilants) o altres sorolls diferents dels habituals",
+      "Coloració blava distal als dits o als llavis (cianosi)"
+    ],
+    "cosas_evitar": {
+      "mpid_fibrotica": {
+        "condiciones": [
+          "sense xiulets (sibilants)",
+          "sense signes d'obstrucció aguda (infecció vírica o increment de mucositat amb més tos, pitos o dificultat expectorar, antecedent d’exposició a possibles allergens)"
+        ],
+        "evitar": ["BRONCODILATADORS (sobretot en pacients 3a edat)"]
+      },
+      "perfil_personal": {
+        "descripcion": "Añadir, por cada paciente, cosas a evitar indicadas en su perfil."
+      }
+    },
+    "tipos_mpid": {
+      "idiopaticas": {
+        "descripcion": "Malalties pulmonars intersticials idiopàtiques (MPII)",
+        "subtipos": [
+          {
+            "nombre": "Fibrosi Pulmonar Idiopàtica (FPI)",
+            "caracteristicas": [
+              "Forma més freqüent i greu",
+              "Associada a un patró de Dany Alveolar Difús (DAD)",
+              "Progrés lent amb fibrosi irreversible"
+            ]
+          },
+          {
+            "nombre": "Pneumònia Intersticial No Específica (NSIP)",
+            "caracteristicas": [
+              "Pot ser predominantment inflamatòria o fibròtica",
+              "Sovint associada a malalties autoimmunes"
+            ]
+          },
+          {
+            "nombre": "Pneumònia Intersticial Descamativa (DIP)",
+            "caracteristicas": [
+              "Relacionada amb el tabaquisme",
+              "Inflamació alveolar i acumulació de macròfags"
+            ]
+          },
+          {
+            "nombre": "Pneumònia Organitzativa Criptogènica (COP)",
+            "caracteristicas": [
+              "Antigament coneguda com bronquiolitis obliterant amb pneumònia organitzativa (BOOP)",
+              "Pot respondre a corticoides"
+            ]
+          },
+          {
+            "nombre": "Pneumònia Intersticial Aguda (AIP)",
+            "caracteristicas": [
+              "Forma aguda i greu",
+              "Evoluciona ràpidament cap a una insuficiència respiratòria"
+            ]
+          },
+          {
+            "nombre": "Pneumònia Intersticial Limfocítica (LIP)",
+            "caracteristicas": [
+              "Sovint associada a malalties autoimmunes o infeccions virals"
+            ]
+          }
+        ]
+      },
+      "relacionadas_autoimmunes": {
+        "descripcion": "MPID relacionades amb malalties autoimmunes",
+        "ejemplos": [
+          "Esclerosi sistèmica (esclerodèrmia)",
+          "Artritis reumatoide",
+          "Lupus eritematós sistèmic (LES)",
+          "Polimiositis o dermatomiositis",
+          "Síndrome de Sjögren"
+        ]
+      },
+      "relacionadas_exposiciones": {
+        "descripcion": "MPID relacionades amb exposicions ambientals o ocupacionals",
+        "ejemplos": [
+          "Pneumoconiosis (asbestosi, silicosi)",
+          "Pulmó del granger (hipersensibilitat)"
+        ]
+      },
+      "relacionadas_farmacos": {
+        "descripcion": "MPID secundàries a exposició a fàrmacs o tòxics",
+        "ejemplos": [
+          "Fàrmacs: Metotrexat, amiodarona, bleomicina",
+          "Exposició tòxica: Radiació"
+        ]
+      },
+      "relacionadas_infecciones": {
+        "descripcion": "MPID associades a infeccions",
+        "ejemplos": [
+          "Tuberculosi atípica",
+          "Infeccions fúngiques o virals cròniques",
+          "Pneumònia per Pneumocystis jirovecii"
+        ]
+      },
+      "geneticas": {
+        "descripcion": "MPID genètiques",
+        "ejemplos": [
+          "Deficiència d’alfa-1-antitripsina",
+          "Malalties familiars de fibrosi pulmonar"
+        ]
+      },
+      "neoplasias": {
+        "descripcion": "MPID associades a neoplàsies o infiltració sistèmica",
+        "ejemplos": [
+          "Malalties hematològiques (limfomes)",
+          "Infiltració tumoral directa"
+        ]
+      },
+      "granulomatosis": {
+        "descripcion": "MPID relacionades amb granulomatosi",
+        "ejemplos": [
+          "Sarcoïdosi (granulomes no caseificants)",
+          "Granulomatosi amb poliangitis (vasculitis sistèmica)"
+        ]
+      }
+    }
+  }
