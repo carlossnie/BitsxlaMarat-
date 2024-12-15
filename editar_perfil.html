@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil [MondongoTV]</title>
+    <link rel="stylesheet" href="/static/css/style_main.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav {
+            width: 250px;
+            background-color: #f4f4f4;
+            border-right: 1px solid #ddd;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+            transition: left 0.3s ease-in-out;
+        }
+        nav.closed {
+            left: -250px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        nav ul li:hover {
+            background-color: #eaeaea;
+        }
+
+        .toggle-menu {
+            position: absolute;
+            top: 20px;
+            left: 100%;
+            width: 30px;
+            height: 30px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .info-container {
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-left: 0;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .info-column {
+            width: calc(33.33% - 40px);
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        .info-box.editable {
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        #edat, #grupSanguini {
+            width: 50px;
+        }
+
+        /* Estilos adicionales para los botones de guardar y cancelar */
+        .action-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .action-buttons button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .save-button {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .cancel-button {
+            background-color: #95a5a6;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <div class="toggle-menu" onclick="toggleMenu()">&#8594;</div>
+        <ul>
+            <li onclick="window.location.href='/main'">Perfil</li>
+            <li onclick="window.location.href='/com_em_trobo'">Com em trobo</li>
+            <li onclick="window.location.href='/guia_urgencies'">Guia urgències</li>
+            <li onclick="window.location.href='/historial_proves'">Historial de proves</li>
+            <li onclick="window.location.href='/centres_medics'">Centres mèdics propers</li>
+            <li onclick="window.location.href='/novetats'">Novetats</li>
+            <li onclick="window.location.href='/logout'" style="color: #e74c3c;">Tanca la sessió</li>
+            <li class="qr-button" onclick="window.location.href='/dashboard'">Veure el codi QR</li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="container">
+            <h1>Editar Perfil</h1>
+            <p>Aquí pots editar la teva informació personal. Les dades mèdiques només poden ser modificades pel personal mèdic.</p>
+
+            <div class="info-container">
+                <!-- Factores de riesgo (No editable) -->
+                <div class="info-column">
+                    <h2>Factors de risc</h2>
+                    <div class="section-divider"></div>
+                    <p><strong>Fumador:</strong></p>
+                    <div class="info-box" id="fumador">Informació...</div>
+
+                    <p><strong>Esports:</strong></p>
+                    <div class="info-box" id="esports">Informació...</div>
+
+                    <p><strong>Alcohol:</strong></p>
+                    <div class="info-box" id="alcohol">Informació...</div>
+
+                    <p><strong>Asma:</strong></p>
+                    <div class="info-box" id="asma">Informació...</div>
+                </div>
+
+                <!-- Datos clínicos -->
+                <div class="info-column">
+                    <h2>Dades cliníques</h2>
+                    <div class="section-divider"></div>
+                    <p><strong>Tipus de MPID:</strong></p>
+                    <div class="info-box editable" id="mpid" contenteditable="true">Informació...</div>
+
+                    <p><strong>Malalties Cròniques:</strong></p>
+                    <div class="info-box editable" id="malaltiesCroniques" contenteditable="true">Informació...</div>
+
+                    <p><strong>Operacions Realitzades:</strong></p>
+                    <div class="info-box editable" id="operacions" contenteditable="true">Informació...</div>
+
+                    <p><strong>Tractament Base:</strong></p>
+                    <div class="info-box editable" id="tractamentBase" contenteditable="true">Informació...</div>
+
+                    <p><strong>Immunosupressions:</strong></p>
+                    <div class="info-box editable" id="immunosupressions" contenteditable="true">Informació...</div>
+
+                    <p><strong>Comorbiditats:</strong></p>
+                    <div class="info-box editable" id="comorbiditats" contenteditable="true">Informació...</div>
+
+                    <p><strong>Antecedents de Malalties Rellevants:</strong></p>
+                    <div class="info-box editable" id="antecedents" contenteditable="true">Informació...</div>
+
+                    <p><strong>Medicació Actual:</strong></p>
+                    <div class="info-box editable" id="medicacio" contenteditable="true">Informació...</div>
+                </div>
+
+                <!-- Datos personales -->
+                <div class="info-column">
+                    <h2>Dades personals</h2>
+                    <div class="section-divider"></div>
+                    <p><strong>Nom:</strong></p>
+                    <div class="info-box editable" id="nom" contenteditable="true">Informació...</div>
+
+                    <p><strong>Cognoms:</strong></p>
+                    <div class="info-box editable" id="cognoms" contenteditable="true">Informació...</div>
+
+                    <p><strong>Edat:</strong></p>
+                    <div class="info-box editable" id="edat" contenteditable="true"></div>
+
+                    <p><strong>Sexe:</strong></p>
+                    <div class="info-box editable" id="sexe" contenteditable="true">Informació...</div>
+
+                    <p><strong>Targeta Sanitària:</strong></p>
+                    <div class="info-box editable" id="tarjetaSanitaria" contenteditable="true">Informació...</div>
+
+                    <p><strong>Direcció:</strong></p>
+                    <div class="info-box editable" id="direccio" contenteditable="true">Informació...</div>
+
+                    <p><strong>Grup Sanguini:</strong></p>
+                    <div class="info-box editable" id="grupSanguini" contenteditable="true"></div>
+
+                    <p><strong>Telèfon:</strong></p>
+                    <div class="info-box editable" id="telefon" contenteditable="true">Informació...</div>
+                </div>
+            </div>
+
+            <!-- Botones de guardar y cancelar -->
+            <div class="action-buttons">
+                <button class="save-button" onclick="guardarCambios()">Guardar Canvis</button>
+                <button class="cancel-button" onclick="window.location.href='/main'">Cancel·lar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var nav = document.getElementById('nav');
+            nav.classList.toggle('closed');
+            var toggleIcon = nav.classList.contains('closed') ? '&#8594;' : '&#8592;';
+            document.querySelector('.toggle-menu').innerHTML = toggleIcon;
+        }
+
+        async function cargarDatosPerfil() {
+            try {
+                const response = await fetch('/api/cargar_perfil');
+                const data = await response.json();
+                
+                if (data.status === "success") {
+                    // Factores de riesgo
+                    const fr = data.data.factores_riesgo || {};
+                    document.getElementById('fumador').textContent = fr.fumador || '';
+                    document.getElementById('esports').textContent = fr.esports || '';
+                    document.getElementById('alcohol').textContent = fr.alcohol || '';
+                    document.getElementById('asma').textContent = fr.asma || '';
+                    
+                    // Datos clínicos
+                    const dc = data.data.datos_clinicos || {};
+                    document.getElementById('mpid').textContent = dc.mpid || '';
+                    document.getElementById('malaltiesCroniques').textContent = dc.malalties_croniques || '';
+                    document.getElementById('operacions').textContent = dc.operacions || '';
+                    document.getElementById('tractamentBase').textContent = dc.tractament_base || '';
+                    document.getElementById('immunosupressions').textContent = dc.immunosupressions || '';
+                    document.getElementById('comorbiditats').textContent = dc.comorbiditats || '';
+                    document.getElementById('antecedents').textContent = dc.antecedents || '';
+                    document.getElementById('medicacio').textContent = dc.medicacio || '';
+                    
+                    // Datos personales
+                    const dp = data.data.datos_personales || {};
+                    document.getElementById('nom').textContent = dp.nom || '';
+                    document.getElementById('cognoms').textContent = dp.cognoms || '';
+                    document.getElementById('edat').textContent = dp.edat || '';
+                    document.getElementById('sexe').textContent = dp.sexe || '';
+                    document.getElementById('tarjetaSanitaria').textContent = dp.targeta_sanitaria || '';
+                    document.getElementById('direccio').textContent = dp.direccio || '';
+                    document.getElementById('grupSanguini').textContent = dp.grup_sanguini || '';
+                    document.getElementById('telefon').textContent = dp.telefon || '';
+                }
+            } catch (error) {
+                console.error('Error al cargar datos:', error);
+            }
+        }
+
+        async function guardarCambios() {
+            const datos = {
+                factores_riesgo: {
+                    fumador: document.getElementById('fumador').textContent,
+                    esports: document.getElementById('esports').textContent,
+                    alcohol: document.getElementById('alcohol').textContent,
+                    asma: document.getElementById('asma').textContent
+                },
+                datos_clinicos: {
+                    mpid: document.getElementById('mpid').textContent,
+                    malalties_croniques: document.getElementById('malaltiesCroniques').textContent,
+                    operacions: document.getElementById('operacions').textContent,
+                    tractament_base: document.getElementById('tractamentBase').textContent,
+                    immunosupressions: document.getElementById('immunosupressions').textContent,
+                    comorbiditats: document.getElementById('comorbiditats').textContent,
+                    antecedents: document.getElementById('antecedents').textContent,
+                    medicacio: document.getElementById('medicacio').textContent
+                },
+                datos_personales: {
+                    nom: document.getElementById('nom').textContent,
+                    cognoms: document.getElementById('cognoms').textContent,
+                    edat: document.getElementById('edat').textContent,
+                    sexe: document.getElementById('sexe').textContent,
+                    targeta_sanitaria: document.getElementById('tarjetaSanitaria').textContent,
+                    direccio: document.getElementById('direccio').textContent,
+                    grup_sanguini: document.getElementById('grupSanguini').textContent,
+                    telefon: document.getElementById('telefon').textContent
+                }
+            };
+
+            try {
+                const response = await fetch('/api/actualizar_perfil', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(datos)
+                });
+
+                const result = await response.json();
+                if (result.status === "success") {
+                    alert('Los cambios se han guardado correctamente');
+                    window.location.href = '/main';
+                } else {
+                    alert('Error al guardar los cambios: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al guardar los cambios');
+            }
+        }
+
+        // También actualizar la navegación del botón cancelar
+        document.querySelector('.cancel-button').onclick = function() {
+            window.location.href = '/main';
+        }
+
+        // Cargar datos al iniciar la página
+        window.onload = function() {
+            cargarDatosPerfil();
+            const urlParams = new URLSearchParams(window.location.search);
+            const section = urlParams.get('section');
+            if(section) {
+                // Aquí puedes añadir lógica específica según la sección
+                console.log('Editando sección:', section);
+            }
+        };
+    </script>
+</body>
+</html>

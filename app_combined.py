@@ -53,11 +53,29 @@ local_db = DataStore()
 # Login required decorator
 def login_required(f):
     def decorated_function(*args, **kwargs):
-        if 'user_id' not in session:
+        # Verificar si estamos accediendo por número de tarjeta sanitaria
+        if request.path.startswith('/main/'):
+            health_card_number = request.path.split('/')[-1]
+            user = users_collection.find_one({"health_card_number": health_card_number})
+            if user:
+                # Si encontramos el usuario, permitir el acceso
+                session['temp_access'] = True
+                session['viewing_card_number'] = health_card_number
+                return f(*args, **kwargs)
+        
+        # Verificación normal de login para otras rutas
+        if 'user_id' not in session and 'temp_access' not in session:
             return redirect(url_for('login'))
         return f(*args, **kwargs)
     decorated_function.__name__ = f.__name__
     return decorated_function
+
+def validate_health_card(number):
+    return bool(number and isinstance(number, str) and len(number) == 14 and 
+                number.startswith('08') and number.isdigit())
+
+def validate_medic_key(key):
+    return bool(key and isinstance(key, str) and len(key) == 6 and key.isdigit())
 
 # Authentication routes
 @app.route('/', methods=['GET', 'POST'])
@@ -67,6 +85,9 @@ def login():
 
         if login_as == 'user':
             health_card_number = request.form.get('health_card_number')
+            if not validate_health_card(health_card_number):
+                flash("Format de targeta sanitària invàlid.", "error")
+                return render_template('login.html')
             password = request.form.get('password')
             user = users_collection.find_one({"health_card_number": health_card_number})
 
@@ -74,29 +95,47 @@ def login():
                 session['user_id'] = str(user['_id'])
                 session["username"] = user["username"]
                 return redirect(url_for('main_page'))
-            flash("Número de tarjeta sanitaria o contraseña incorrectos.", "error")
+            flash("Número de targeta sanitària o contrasenya incorrectes.", "error")
 
         elif login_as == 'medic':
             health_card_number = request.form.get('health_card_number_medic')
             medic_key = request.form.get('medic_key')
+            
+            if not validate_health_card(health_card_number):
+                flash("Format de targeta sanitària invàlid.", "error")
+                return render_template('login.html')
+                
+            if not validate_medic_key(medic_key):
+                flash("Format de clau de metge invàlid.", "error")
+                return render_template('login.html')
+                
             medic = medics_collection.find_one({"medic_key": medic_key})
+            user = users_collection.find_one({"health_card_number": health_card_number})
 
-            if medic:
-                user = users_collection.find_one({"health_card_number": health_card_number})
-                if user:
-                    session['medic_id'] = str(medic['_id'])
-                    return redirect(url_for('main_page'))
-                flash("Pacient no trobat amb aquesta tarjeta sanitària.", "error")
+            if medic and user:
+                session['medic_id'] = str(medic['_id'])
+                session['user_id'] = str(user['_id'])  # Store the patient's user ID
+                session['viewing_card_number'] = health_card_number
+                session['is_medic'] = True
+                return redirect(url_for('main_page'))
             else:
-                flash("Clau de metge incorrecta.", "error")
+                if not medic:
+                    flash("Clau de metge incorrecta.", "error")
+                if not user:
+                    flash("Pacient no trobat amb aquesta targeta sanitària.", "error")
 
     return render_template('login.html')
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        username = request.form.get("full_name")
         health_card_number = request.form.get("health_card_number")
+        
+        if not validate_health_card(health_card_number):
+            flash("Format de targeta sanitària invàlid.", "error")
+            return render_template('register.html')
+            
+        username = request.form.get("full_name")
         password = request.form.get("password")
 
         medical_info = {
@@ -116,7 +155,7 @@ def register():
         }
 
         if users_collection.find_one({"health_card_number": health_card_number}):
-            return "El número de tarjeta sanitaria ya está registrado", 400
+            return "El número de targeta sanitària ja està registrat", 400
 
         hashed_password = generate_password_hash(password)
         user = {
@@ -127,12 +166,14 @@ def register():
         }
         result = users_collection.insert_one(user)
 
-        # Generate QR code with main URL including user_id
+        # Store the new user's ID right after insertion
         user_id = str(result.inserted_id)
-        qr_code = qrcode.make(f"http://localhost:{port}/main/{user_id}")
+
+        # Generate QR code with health_card_number instead of user_id
+        qr_code = qrcode.make(f"http://localhost:{port}/main/{health_card_number}")
         
-        # Save QR code
-        qr_filename = f"{user_id}.png"
+        # Save QR code using health_card_number as filename
+        qr_filename = f"{health_card_number}.png"
         os.makedirs("static/qrcodes", exist_ok=True)
         qr_path = os.path.join("static/qrcodes", qr_filename)
         qr_code.save(qr_path)
@@ -153,22 +194,41 @@ def user_profile(user_id):
 
 # Main application routes - Renamed to avoid conflicts
 @app.route('/main')
-@app.route('/main/<user_id>')
+@app.route('/main/<health_card_number>')
 @login_required
-def main_page(user_id=None):
-    if user_id:
-        # If accessing through QR, load that user's data
-        user = users_collection.find_one({"_id": ObjectId(user_id)})
-        if not user:
-            return "Usuario no encontrado.", 404
-    else:
-        # If accessing normally, load logged in user's data
-        user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
-    
-    if not user:
-        return "Usuario no encontrado.", 404
+def main_page(health_card_number=None):
+    try:
+        # Si viene con health_card_number en la URL
+        if health_card_number:
+            user = users_collection.find_one({"health_card_number": health_card_number})
+            if user:
+                # Guardar en sesión y redirigir limpiando la URL
+                session['viewing_card_number'] = health_card_number
+                session['temp_access'] = True
+                return redirect(url_for('main_page'))
+            else:
+                flash("Usuario no encontrado", "error")
+                return redirect(url_for('login'))
+        
+        # Para la ruta /main normal
+        if session.get('viewing_card_number'):
+            # Si hay un número de tarjeta en la sesión, usarlo
+            user = users_collection.find_one({"health_card_number": session['viewing_card_number']})
+            if not user:
+                session.pop('viewing_card_number', None)
+                return "Usuario no encontrado.", 404
+        else:
+            # Usuario normal logueado
+            user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
+            if not user:
+                return "Usuario no encontrado.", 404
 
-    return render_template('main.html', user_data=user)
+        is_medic = session.get('is_medic', False)
+        return render_template('main.html', user_data=user, is_medic=is_medic)
+
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        return redirect(url_for('login'))
 
 @app.route('/perfil')
 @login_required
@@ -184,7 +244,9 @@ def estado_actual():
 @app.route('/urgencias')
 @login_required
 def urgencias():
-    return render_template('guia_urgencies.html', pruebas=local_db.pruebas)
+    # Check if user is a medic
+    is_medic = session.get('is_medic', False)
+    return render_template('guia_urgencies.html', pruebas=local_db.pruebas, is_medic=is_medic)
 
 @app.route('/historial')
 @login_required
@@ -270,40 +332,49 @@ def guardar_sintomas():
 @login_required
 def cargar_perfil():
     try:
-        user_id = request.args.get('user_id', session.get('user_id'))
-        user = users_collection.find_one({"_id": ObjectId(user_id)})
+        # Usar viewing_card_number de la sesión si existe
+        if session.get('viewing_card_number'):
+            user = users_collection.find_one({"health_card_number": session['viewing_card_number']})
+        else:
+            # Si no, usar el user_id
+            user = users_collection.find_one({"_id": ObjectId(session.get('user_id'))})
         
         if not user:
+            print("Usuario no encontrado")  # Para debug
             return jsonify({"status": "error", "message": "Usuario no encontrado"})
 
+        print("Usuario encontrado:", user)  # Para debug
+        
         datos = {
             "status": "success",
             "data": {
                 "factores_riesgo": {
-                    "fumador": user['medical_info'].get('smoker'),
-                    "esports": user['medical_info'].get('physical_activity'),
-                    "alcohol": user['medical_info'].get('alcohol_consumption'),
-                    "asma": user['medical_info'].get('asma')
+                    "fumador": "Sí" if user['medical_info'].get('smoker') == "Yes" else "No" if user['medical_info'].get('smoker') == "No" else "Ex-fumador",
+                    "esports": "Sí" if user['medical_info'].get('physical_activity') == "Yes" else "No",
+                    "alcohol": "Sí" if user['medical_info'].get('alcohol_consumption') == "Yes" else "No",
+                    "asma": "Sí" if user['medical_info'].get('asma') == "Yes" else "No"
                 },
                 "datos_clinicos": {
-                    "mpid": user['medical_info'].get('MPID'),
-                    "tractament_base": user['medical_info'].get('base_treatment'),
-                    "immunosupressions": user['medical_info'].get('immunosuppression'),
-                    "comorbiditats": user['medical_info'].get('comorbidities'),
-                    "antecedents": user['medical_info'].get('diseases'),
-                    "medicacio": user['medical_info'].get('medications')
+                    "mpid": user['medical_info'].get('MPID', 'Sense dades'),
+                    "tractament_base": user['medical_info'].get('base_treatment', 'Sense dades'),
+                    "immunosupressions": "Sí" if user['medical_info'].get('immunosuppression') == "yes" else "No",
+                    "comorbiditats": user['medical_info'].get('comorbidities', 'Sense dades'),
+                    "antecedents": user['medical_info'].get('diseases', 'Sense dades'),
+                    "medicacio": user['medical_info'].get('medications', 'Sense dades')
                 },
                 "datos_personales": {
                     "nom": user['username'],
-                    "edat": user['medical_info'].get('age'),
-                    "sexe": user['medical_info'].get('sex'),
+                    "edat": user['medical_info'].get('age', 'Sense dades'),
+                    "sexe": "Home" if user['medical_info'].get('sex') == "Male" else "Dona",
                     "targeta_sanitaria": user['health_card_number'],
-                    "grup_sanguini": user['medical_info'].get('blood_type')
+                    "grup_sanguini": user['medical_info'].get('blood_type', 'Sense dades')
                 }
             }
         }
+        print("Datos enviados:", datos)  # Para debug
         return jsonify(datos)
     except Exception as e:
+        print("Error en cargar_perfil:", str(e))
         return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route('/api/verificar_clave_medico', methods=['POST'])
@@ -325,8 +396,17 @@ def verificar_clave_medico():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    user_id = session.get('user_id')
-    qr_filename = f"{user_id}.png"
+    # Primero intentar obtener el usuario por el health_card_number de la sesión
+    if 'viewing_card_number' in session:
+        health_card_number = session['viewing_card_number']
+    else:
+        # Si no hay viewing_card_number, usar el user_id normal
+        user = users_collection.find_one({"_id": ObjectId(session['user_id'])})
+        if not user:
+            return "Usuario no encontrado.", 404
+        health_card_number = user['health_card_number']
+    
+    qr_filename = f"{health_card_number}.png"
     return render_template('dashboard.html', qr_code_path=f"qrcodes/{qr_filename}", codi_qr=f"qrcodes/{qr_filename}")
 
 if __name__ == '__main__':
@@ -335,3 +415,5 @@ if __name__ == '__main__':
     
     print(f"Server started at http://localhost:{port}")
     app.run(host='0.0.0.0', port=port, debug=True)
+
+#a

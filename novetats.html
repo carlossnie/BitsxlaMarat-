@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novetats [MondongoTV]</title>
+    <link rel="stylesheet" href="/static/css/style_main.css">
+    <style>
+        /* Estilos específicos para novedades */
+        .articles-container {
+            display: grid;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            border-left: 4px solid #3498db;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .article-date {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .article-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .article-authors {
+            color: #3498db;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .article-abstract {
+            color: #666;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background: #e8f4f8;
+            color: #3498db;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+
+        .article-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .article-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Reutilizar los estilos del menú de estado.html */
+        nav {
+            width: 250px;
+            background-color: #f4f4f4;
+            border-right: 1px solid #ddd;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+            transition: left 0.3s ease-in-out;
+        }
+
+        nav.closed {
+            left: -250px;
+        }
+
+        nav ul li {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            font-size: 18px;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        nav ul li:hover {
+            background-color: #eaeaea;
+        }
+
+        .toggle-menu {
+            position: absolute;
+            top: 20px;
+            left: 100%;
+            width: 30px;
+            height: 30px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            text-align: center;
+            cursor: pointer;
+            line-height: 30px;
+            color: #000000;
+        }
+
+        /* Ajuste del contenido */
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .container {
+            width: calc(100% - 350px);
+            max-width: calc(100vw - 370px);
+            margin: 20px 20px 20px 120px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <div class="toggle-menu" onclick="toggleMenu()">&#8594;</div>
+        <ul>
+            <li onclick="window.location.href='/main'">Perfil</li>
+            <li onclick="window.location.href='/estado'">Com em trobo</li>
+            <li onclick="window.location.href='/urgencias'">Guia urgències</li>
+            <li onclick="window.location.href='/historial'">Historial de proves</li>
+            <li onclick="window.location.href='/centros'">Centres mèdics propers</li>
+            <li onclick="window.location.href='/noticias'">Novetats</li>
+            <li onclick="window.location.href='/logout'" style="color: #e74c3c;">Tanca la sessió</li>
+            <li class="qr-button" onclick="window.location.href='/dashboard'">Veure el codi QR</li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="container">
+            <h1>Novetats Científiques</h1>
+            
+            <div class="articles-container">
+                <div class="article-card">
+                    <div class="article-date">15 Març 2024</div>
+                    <div class="article-title">Avenços en el Tractament de Malalties Respiratòries</div>
+                    <div class="article-authors">Dr. Maria Garcia, Dr. Joan Puig - Hospital Clínic Barcelona</div>
+                    <div class="article-abstract">
+                        Nova investigació sobre tractaments innovadors per a malalties respiratòries cròniques. 
+                        L'estudi demostra millores significatives en pacients amb asma i MPOC.
+                    </div>
+                    <div class="article-tags">
+                        <span class="tag">Respiratori</span>
+                        <span class="tag">Tractament</span>
+                        <span class="tag">Investigació Clínica</span>
+                    </div>
+                    <a href="#" class="article-link">Llegir més →</a>
+                </div>
+
+                <!-- Se pueden agregar más artículos dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var nav = document.getElementById('nav');
+            nav.classList.toggle('closed');
+            var toggleIcon = nav.classList.contains('closed') ? '&#8594;' : '&#8592;';
+            document.querySelector('.toggle-menu').innerHTML = toggleIcon;
+        }
+
+        // Función para cargar artículos
+        function loadArticles() {
+            // Aquí iría la lógica para cargar artículos desde el servidor
+        }
+
+        document.addEventListener('DOMContentLoaded', loadArticles);
+
+        function confirmLogout() {
+            if (confirm("Estàs segur que vols tancar la sessió?")) {
+                window.location.href = '/logout';
+            }
+        }
+    </script>
+</body>
+</html>

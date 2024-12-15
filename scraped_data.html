@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Scrapeados</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #2980b9;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #2980b9;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #1d5f7e;
+        }
+    </style>
+</head>
+<body>
+    <h1>Datos Scrapeados</h1>
+    <div class="container">
+        <a href="/home" class="button">Volver a la Página Principal</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Etiqueta</th>
+                <th>Contenido</th>
+                <th>Enlace</th>
+                <th>Fecha de Scrap</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            <tr>
+                <td>{{ item.tag }}</td>
+                <td>{{ item.content }}</td>
+                <td>
+                    {% if item.link %}
+                    <a href="{{ item.link }}" target="_blank">Abrir enlace</a>
+                    {% else %}
+                    Sin enlace
+                    {% endif %}
+                </td>
+                <td>{{ item.scraped_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
